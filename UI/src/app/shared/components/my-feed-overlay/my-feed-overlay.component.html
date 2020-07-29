@@ -1,0 +1,28 @@
+<div class="col-12 h-100 hb-my-feed-overlay-container"  [style.width]="sectionWidth + 'px'">
+    <div class="col-12 p-0" >
+        <section class="hb-section">
+            <div class="col-12 p-0 row align-items-center">
+                <div class="col-8 p-0 hb-my-feed-overlay-heading">My Notifications
+                </div>
+                <div class="col-4 p-0 text-right hb-close-icon">
+                    <button mat-button type="button" class="pr-0" (click)="closeOverlay()">Close <mat-icon>close
+                        </mat-icon></button>
+                </div>
+            </div>
+        </section>
+        <section class="hb-section">
+            <div class="row w-100 hb-document-upload-section">               
+                <div style="cursor: pointer;" class="row w-100 align-items-center hb-document-upload-section-body"
+                    *ngFor="let noty of notyList; let index=index;" (click)="openDiscussion(noty.questionid)">
+                    <div class="col-10">
+                        {{ noty?.body }}
+                        <p class="m-0 hb-uploaded-date-time"></p>
+                    </div>                                      
+                    <div class="col-1 d-none d-lg-block">
+                    {{ noty?.date }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

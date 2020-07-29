@@ -1,0 +1,53 @@
+<ng-template #topicsTemplate >
+  <div class="topic-info-container">
+    <div class="row" *ngIf="topicDetailsList">
+      <div class="col-12 col-sm-6 col-lg-3 topic-info-card" (click)="goToQuiz(topicdetails.topiccode)"  *ngFor="let topicdetails of topicDetailsList">
+        <div [ngClass]="addtopicLogo(topicdetails.topiccode)">
+          <div class="topic-info-logo-container">
+          </div>
+          <span *ngIf="topicdetails.topicname ==selectedtopicName" class="checkmark">
+            <img src="assets/images/favtopic.png" alt="user" class="rounded-circle" width="70">
+          </span>
+          <div class="topic-name-container">
+            <h3 class="topic-name">
+              {{topicdetails.topicname}}
+            </h3>
+          </div>
+          <div class="topic-stadium-container">
+            <h6 class="topic-stadium">
+              {{topicdetails.totalQ}} Questions
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="hb-create-contact-container" >
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreateDiscussion">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreateDiscussionHeading">
+        Select a Subject
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreateDiscussionModalCloseBtn" (click)="navigateToBack()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreateDiscussionModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreateDiscussionBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="topicsTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+     
+    </footer>
+  </div>
+</div>

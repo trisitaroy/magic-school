@@ -1,0 +1,215 @@
+@import './../../../../assets/scss/variables';
+
+.hb-my-feed-overlay-container {
+    padding: 1.5rem;
+    .hb-section {
+        margin-bottom: 1rem;
+        &.hb-pdf-section {
+            flex: 1 1 auto;
+            .hb-pdf-view-section-container {
+                .hb-pdf-view-section {
+                    background-color: $hb-pdf-view-section-bg-color;
+                    text-align: center;
+                    color: $hb-pdf-view-section-color;
+                    .hb-pdf-text {
+                        position: relative;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 2rem;
+                    }
+                }
+                .hb-doc-split-section-container {
+                    .hb-doc-split-section {
+                        @extend .hb-pdf-view-section;
+                        height: 40%;
+                    }
+                    .hb-button-group {
+                        margin: 1rem;
+                        button + button {
+                            margin-left: 1rem;
+                        }
+                        .hb-primary-button {
+                            background-color: $hb-primary-btn-bg-color;
+                            color: $hb-primary-btn-color;
+                            padding: 0.2rem 1.5rem;
+                            border: none;
+                            border-radius: 10px;
+                        }
+                        .hb-secondary-button {
+                            @extend .hb-primary-button;
+                            background-color: $hb-seconadry-btn-bg-color;
+                            color: $hb-seconadry-btn-color;
+                        }
+                    }
+                }
+            }
+        }
+        .hb-my-feed-overlay-heading {
+            font-size: 1.5rem;
+            .mat-icon {
+                vertical-align: sub;
+                margin-right: 0.5rem;
+            }
+        }
+        .hb-my-feed-overlay-sub-heading {
+            padding-left: 2rem;
+            font-size: 0.8rem;
+        }
+        .hb-close-icon {
+            color: $hb-positive-link-color;
+        }
+        .hb-pending-listig-info {
+            padding: 1rem !important;
+            border-radius: 10px;
+            box-shadow: 1px 2px 4px 1px $hb-box-shadow-color;
+            .table {
+                thead th , tbody td {
+                    border: none;
+                    padding: 0 0.5rem;
+                }
+                thead {
+                    th {
+                        color: $hb-form-label-color;
+                        font-size: 0.65rem;
+                        text-transform: uppercase;
+                        &:first-child {
+                            color: $hb-form-property-label-color;
+                        }
+                    }
+                }
+                tbody {
+                    td {
+                        font-size: 0.75rem;
+                        &:first-child {
+                            font-size: 1.05rem;
+                        }
+                    }
+                }
+            }
+        }
+        .hb-split-doc-label {
+            color: $hb-body-font;
+            font-size: 1rem;
+        }
+        .hb-document-upload {
+            padding: 0.5rem 1rem;
+            border: 1.5px dashed $hb-grey-border;
+            border-radius: 10px;
+            color: $hb-body-font;
+            position: relative;
+            .hb-file-import {
+                color: $hb-file-import-link-color;
+                cursor: pointer;                
+                line-height: initial;
+                font-weight: inherit;
+            }
+            .hb-file-import-popup {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                padding: 1rem;
+                background-color: $hb-white;
+                z-index: 1;
+                top: 100%;
+                border: 1px solid $hb-grey-border;
+                .hb-close-icon {
+                    cursor: pointer;
+                }
+                .hb-file-import-header {
+                    text-transform: uppercase;
+                    color: $hb-body-font;
+                    font-size: 1rem;
+                }
+                .hb-form-label {
+                    color: $hb-body-font;
+                    font-size: 1rem;
+                    display: block;
+                }
+                .hb-browse {
+                    background-color: $hb-primary-btn-bg-color;
+                    color: $hb-primary-btn-color;
+                    padding: 0.2rem 1.5rem;
+                    border: none;
+                    border-radius: 10px;
+                    height: 30px;
+                    cursor: pointer;
+                    input[type="file"] {
+                        display: none;
+                    }
+                }
+
+            }
+        }
+        .hb-document-upload-section {
+            .hb-listing-row-heading {
+                padding: 0.5rem 1rem;
+                color: $hb-body-font;
+                font-size: 1rem;
+            }
+            .hb-listing-row {
+                border: 1px solid $hb-grey-border;
+                padding: 0.75rem 0;
+                border-radius: 10px;
+                justify-content: space-around;
+                >div:first-child {
+                    min-width: 25%;;
+                }
+                .hb-menu-button {
+                    text-align: right;
+                }
+                & + .hb-listing-row {
+                    margin-top: 0.5rem;
+                }
+            }
+            .hb-document-upload-section-header {
+                padding: 0.75rem;
+                background-color: $hb-doc-upload-section-header-bg-color;
+                border-radius: 10px;
+                color: $hb-body-font;
+                margin-bottom: 0.5rem;
+            }
+            .hb-document-upload-section-body {
+                @extend .hb-document-upload-section-header;
+                background-color: $hb-white;
+                border: 1px solid $hb-grey-border;
+                font-weight: normal;
+                .hb-uploaded-date-time {
+                    font-size: 0.65rem;
+                    color: $hb-positive-link-color;
+                }
+            }
+            .hb-form-field-content {
+                color: $hb-body-font;
+                font-size: 0.75rem;
+            }
+            .hb-listing-contract-label {
+                font-size: 0.85rem;
+                color: $hb-body-font;
+            }
+            .hb-tasked-button {
+                color: $hb-white;
+                width: 50px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                text-transform: uppercase;
+                font-size: 0.65rem;
+                &.hb-task-complete {
+                    background-color: $hb-task-complete-bg-color;
+                }
+                &.hb-task-pending {
+                    background-color: $hb-task-pending-bg-color;
+                }
+            }
+        }
+
+        .hb-remarks-section {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            .hb-remarks-heading {
+                color: $hb-body-font;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

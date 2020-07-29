@@ -1,0 +1,774 @@
+/* You can add global styles to this file, and also import other style files */
+
+/**
+  **********************************************
+  Bootstrap 4 scss files added
+*/
+
+/** Bootstrap 4 "functions" "variables" scss files are coming from custom _variables files
+    to reuse the Bootstrap variables into other components */
+@import "./assets/scss/variables";
+@import "./assets/scss/fonts";
+@import "./assets/scss/mixins";
+
+// @import "functions";
+// @import "variables";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/root";
+@import "./node_modules/bootstrap/scss/reboot";
+@import "./node_modules/bootstrap/scss/type";
+@import "./node_modules/bootstrap/scss/images";
+@import "./node_modules/bootstrap/scss/code";
+@import "./node_modules/bootstrap/scss/grid";
+@import "./node_modules/bootstrap/scss/tables";
+@import "./node_modules/bootstrap/scss/forms";
+@import "./node_modules/bootstrap/scss/buttons";
+@import "./node_modules/bootstrap/scss/transitions";
+@import "./node_modules/bootstrap/scss/dropdown";
+@import "./node_modules/bootstrap/scss/button-group";
+@import "./node_modules/bootstrap/scss/input-group";
+@import "./node_modules/bootstrap/scss/custom-forms";
+@import "./node_modules/bootstrap/scss/nav";
+@import "./node_modules/bootstrap/scss/navbar";
+@import "./node_modules/bootstrap/scss/card";
+@import "./node_modules/bootstrap/scss/breadcrumb";
+@import "./node_modules/bootstrap/scss/pagination";
+@import "./node_modules/bootstrap/scss/badge";
+@import "./node_modules/bootstrap/scss/jumbotron";
+@import "./node_modules/bootstrap/scss/alert";
+@import "./node_modules/bootstrap/scss/progress";
+@import "./node_modules/bootstrap/scss/media";
+@import "./node_modules/bootstrap/scss/list-group";
+@import "./node_modules/bootstrap/scss/close";
+@import "./node_modules/bootstrap/scss/toasts";
+@import "./node_modules/bootstrap/scss/modal";
+@import "./node_modules/bootstrap/scss/tooltip";
+@import "./node_modules/bootstrap/scss/popover";
+@import "./node_modules/bootstrap/scss/carousel";
+@import "./node_modules/bootstrap/scss/spinners";
+@import "./node_modules/bootstrap/scss/utilities";
+@import "./node_modules/bootstrap/scss/print";
+
+@import '~saturn-datepicker/bundle.css';
+@import '~ngx-toastr/toastr.css';  
+
+/**
+  **********************************************
+*/
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto Regular, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  z-index: 0;
+  color: $hb-body-font;
+  max-width: 1900px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  &.overlay-open {
+    overflow: hidden;
+  }
+  .container {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .row {
+    margin: 0;
+  }
+}
+
+/* COMMON SCSS */
+
+/* TYPOGRAPHY */
+$typography: (
+  1: (
+    font-size: 32px,
+    font-family: 'Roboto Light',
+    text-transform: none
+  ),
+  2: (
+    font-size: 25px,
+    font-family: 'Roboto Regular',
+    text-transform: none
+  ),
+  3: (
+    font-size: 16px,
+    font-family: 'Roboto Medium',
+    text-transform: none
+  ),
+  4: (
+    font-size: 14px,
+    font-family: 'Roboto Medium',
+    text-transform: none
+  ),
+  5: (
+    font-size: 10px,
+    font-family: 'Roboto Bold',
+    text-transform: uppercase
+  )
+);
+
+@each $heading, $styles in $typography {
+  h#{$heading} {
+    font-size: map-get($styles , 'font-size' );
+    font-family: map-get($styles , 'font-family' );
+    text-transform: map-get($styles , 'text-transform' );
+    letter-spacing: 0;
+  }
+}
+
+/* LINK */
+a:not([href]):not([tabindex]), a, * {
+  &.hb-link {
+    letter-spacing: 0;
+    font-size: 0.75rem;
+    cursor: pointer;
+    line-height: inherit;
+    font-family: Roboto Medium;
+    color: inherit;
+  }
+  &.hb-positive-link {
+    @extend .hb-link;
+    color: $hb-positive-link-color;
+  }
+
+  &.hb-negative-link {
+    @extend .hb-link;
+    color: $hb-negative-link-color;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* ICON */
+.hb-icon {
+  cursor: pointer;
+  display: inline;
+  vertical-align: middle;
+}
+
+/* FORM LABEL AND INPUT */
+.form-group {
+  .hb-form-label {
+    font: {
+      family: Roboto Regular;
+      size: 0.75rem;
+    }
+    letter-spacing: 0;
+    color: $hb-form-label-color;
+    margin-left: 0.5rem;
+    &.hb-field-error {
+      color: $hb-form-field-error;
+    }
+    &.hb-disabled {
+      pointer-events: none;
+      opacity: 1;
+    }
+    &.hb-required {
+      margin-left: 0;
+      &::before {
+        content: '*';
+        margin-right: 3px;
+        color: red;
+      }
+    }
+  }
+  .form-control {
+      background: $hb-white 0% 0% no-repeat padding-box;
+      border: 0.5px solid $hb-grey-border;
+      border-radius: 4px;
+      height: 40px;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      &.hb-field-error {
+        border: 0.5px solid $hb-form-field-error;
+      }
+      &:disabled, &.hb-disabled {
+        opacity: 0.5;
+        background: transparent;
+      }
+  }
+  .hb-form-content {
+    font-size: 0.875rem;
+  }
+  textarea {
+    min-height: 150px;
+  }
+  .mat-datepicker-toggle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .hb-field-error-msg {
+    color: $hb-form-field-error;
+    text-align: right;
+    background-color: $hb-form-field-error-bg-color;
+    font-size: 0.625rem;
+    padding: 0.25rem;
+    border: 0.5px solid $hb-form-field-error;
+    border-radius: 0 0 4px 4px;
+    border-top: 0;
+    position: relative;
+    &::before {
+      content: "";
+      height: 3px;
+      width: 1px;
+      position: absolute;
+      left: -0.5px;
+      top: -3px;
+      border-left: 0.5px solid $hb-form-field-error;
+    }
+    &::after {
+      content: "";
+      height: 3px;
+      width: 1px;
+      position: absolute;
+      right: -0.5px;
+      top: -3px;
+      border-right: 0.5px solid $hb-form-field-error;
+    }
+  }
+}
+
+.hb-disabled {
+  pointer-events:none;
+  opacity: 0.5;
+}
+
+/* CHECKBOX */
+.hb-checkbox {
+  .mat-checkbox-layout {
+    margin: 0;
+    white-space: normal;
+  }
+  .mat-checkbox-inner-container {
+    background: $hb-checkbox-bg-color;
+  }
+  .mat-checkbox-frame {
+      border: 0.5px solid $hb-grey;
+  }
+  &.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+  &.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+  &.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-background,
+  &.mat-checkbox-indeterminate:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-background {
+    background-color: $hb-checkbox-bg-color;
+    border: 0.5px solid $hb-grey;
+    .mat-checkbox-checkmark {
+      padding: 2px;
+    }
+    .mat-checkbox-checkmark-path {
+      stroke: $hb-checkbox-stroke-color !important;
+      stroke-width: 3px;
+    }
+  }
+  &.mat-checkbox-disabled .mat-checkbox-background,
+  &.mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,
+  &.mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {
+    background-color: $hb-checkbox-disabled-bg-color;
+    border: 0.5px solid $hb-grey;
+    .mat-checkbox-checkmark-path {
+      stroke: $hb-checkbox-stroke-color !important;
+    }
+  }
+}
+
+.hb-large-checkbox {
+  @extend .hb-checkbox;
+  .mat-checkbox-inner-container {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* RADIO BUTTON */
+.hb-radio-button {
+  &.mat-radio-button {
+    display: flex;
+    &.mat-accent .mat-radio-inner-circle,
+    &.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+    &.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+    &.mat-accent:active .mat-radio-persistent-ripple {
+      background-color: $hb-blue;
+    }
+    .mat-radio-label {
+      margin-bottom: 0;
+      .mat-radio-container {
+        width: 18px;
+        height: 18px;
+        .mat-radio-outer-circle {
+          border-color: $hb-grey;
+          border-width: 1px;
+          width: inherit;
+          height: inherit;
+        }
+        .mat-radio-inner-circle {
+          background-color: $hb-blue;
+          width: inherit;
+          height: inherit;
+        }
+      }
+    }
+  }
+}
+
+/* SELECT DROPDOWN, AUTOCOMPLETE */
+.hb-select-dropdown {
+  position: relative;
+  .form-control { 
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .mat-select-arrow {
+    visibility: hidden;
+  }
+  .mat-select-value-text {
+    vertical-align: middle;
+  }
+  .hb-icon {
+    position: absolute;
+    width: 10px;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+  }
+}
+
+.hb-select {
+  &.mat-select-panel {
+    margin: 2.5rem 0;
+  }
+}
+
+.hb-autocomplete {
+  &.mat-autocomplete-panel {
+    margin: 0.625rem 0;
+  }
+}
+
+.hb-select, .hb-autocomplete {
+  background: $hb-white 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 16px $hb-box-shadow-color !important;
+  border-radius: 4px;
+  &.mat-select-panel, &.mat-autocomplete-panel {
+    border-right: 5px solid $hb-white;
+  }
+  &.mat-select-panel .mat-optgroup-label,
+  &.mat-select-panel .mat-option,
+  .mat-option {
+    line-height: calc(3em - 0.5px);
+    font-size: 0.875rem;
+    height: 3em;
+    &:not(:last-child) .mat-option-text {
+        border-bottom: 0.5px solid $hb-grey-border;
+    }
+  }
+
+  // Scrollbar
+  
+  // For IE
+  scrollbar-face-color:$hb-grey;
+  scrollbar-arrow-color:transparent;
+  scrollbar-track-color:$hb-off-white;
+  scrollbar-shadow-color:transparent;
+  scrollbar-highlight-color:transparent;
+  scrollbar-3dlight-color:transparent;
+  scrollbar-darkshadow-Color:transparent;
+
+  // width
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  // Track
+  &::-webkit-scrollbar-track {
+    background: $hb-off-white;
+    border-radius: 24px;
+  }
+
+  // Handle
+  &::-webkit-scrollbar-thumb {
+    background: $hb-grey;
+    border-radius: 24px;
+  }
+}
+
+/* BUTTON FOCUS REMOVE OUTLINE */
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button{
+  &.mat-button-base{
+    outline: none;
+    &:hover{
+      .mat-button-focus-overlay{
+        opacity: 0;
+      }
+    }
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+/* BUTTON FOCUS REMOVE OUTLINE */
+
+/* ACCORDION */
+.hb-accordion {
+  .hb-accordion-panel {
+    background-color: $hb-off-white-bg;
+    margin: 0 0 0.6rem 0;
+    box-shadow: 0px 1px 4px $hb-box-shadow-color;
+    color: $hb-body-font;
+    position: relative;
+    &.mat-expanded {
+      box-shadow: none;
+    }
+    .hb-accordion-header {
+      background-color: aqua;
+      min-height: 48px;
+      background: $hb-white 0% 0% no-repeat padding-box;
+      box-shadow: 0px 1px 4px $hb-box-shadow-color;
+      border-radius: 8px;
+      font-family: Roboto Medium;
+      &:hover:not([aria-disabled=true]),
+      &.mat-expanded:focus {
+        background: $hb-white 0% 0% no-repeat padding-box;
+      }
+      .mat-expansion-panel-header-title {
+        color: $hb-body-font;
+      }
+      .mat-content {
+        align-items: center;
+      }
+    }
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0;
+        .hb-accordion-content {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+
+.hb-accordion-type-2 {
+  .hb-accordion-panel {
+    color: $hb-body-font;
+    margin: 0;
+    position: relative;
+    border: 1px solid $hb-grey-border;
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+    box-shadow: none;
+    border-radius: 0 !important;
+    .hb-accordion-header {
+      background-color: aqua;
+      padding: 1rem;
+      min-height: 48px;
+      font-family: Roboto Medium;
+      &:hover:not([aria-disabled=true]),
+      &.mat-expanded:focus,
+      &.cdk-program-focused:not([aria-disabled=true]) {
+        background: $hb-white;
+      }
+      .mat-expansion-panel-header-title {
+        color: $hb-body-font;
+      }
+      .mat-content {
+        align-items: center;
+      }
+    }
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0;
+        .hb-accordion-content {
+          padding: 1rem 1rem 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.mat-expansion-panel {
+  .mat-expansion-panel-content {
+    height: 0;
+  }
+  &.mat-expanded {
+    .mat-expansion-panel-content {
+      height: auto !important;
+      visibility: visible !important;
+    }
+  }
+}
+
+/* BUTTON */
+.hb-button-group {
+  display: flex;
+  flex-flow: row wrap;
+  button {
+    & + button {
+      margin-left: 1rem;
+    }
+  }
+
+  .hb-primary-btn-type-1 {
+    @include button($hb-primary-btn-type-1-bg-color, $hb-primary-btn-type-1-color, $hb-primary-btn-type-1-border-color);
+  }
+
+  .hb-primary-btn-type-2 {
+    @include button($hb-primary-btn-type-2-bg-color, $hb-primary-btn-type-2-color, $hb-primary-btn-type-2-border-color);
+  }
+
+  .hb-secondary-btn {
+    @include button($hb-seconadry-btn-bg-color, $hb-seconadry-btn-color, $hb-seconadry-btn-border-color);
+  }
+}
+
+/* PROGRESS SPINNER */
+@include hb-progress-spinner;
+
+/* TABS */
+.hb-tabs-container {
+  .hb-tab-group {
+    .mat-tab-header {
+      border-bottom: 0.5px solid $hb-grey;
+      margin-bottom: 1.5rem;
+      .mat-tab-label-container {
+        .mat-tab-list {
+          .mat-tab-labels {
+            .mat-tab-label {
+              letter-spacing: 0.22px;
+              text-transform: capitalize;
+              color: $hb-body-font;
+              padding: 0;
+              min-width: 5rem;
+              &:not(:last-child) {
+                margin-right: 1rem;
+              }
+              @extend .hb-roboto-regular;
+              opacity: 1;
+              &.mat-tab-label-active {
+                color: $hb-blue;
+                @extend .hb-roboto-medium;
+              }
+              &.mat-tab-disabled {
+                opacity: 0.5;
+              }
+            }
+          }
+          .mat-ink-bar {
+            background-color: $hb-light-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* MATERIAL MENU */
+.hb-menu {
+  background: $hb-white 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 16px $hb-box-shadow-color;
+  &.mat-menu-panel {
+    overflow: hidden;
+    border-radius: 8px;
+    min-height: 85px;
+  }
+  .mat-menu-content:not(:empty) {
+    padding: 0;
+    .hb-menu-content-container {
+      padding: 1rem;
+      .hb-menu-item {
+        padding: 0.5rem 0;
+        font-size: 0.875rem;
+        color: $hb-blue;
+        cursor: pointer;
+        .hb-icon {
+          height: 1rem;
+          width: 1rem;
+          vertical-align: sub;
+        }
+      }
+    }
+  }
+}
+
+/* BREADCRUMB */
+.hb-breadcrumb-container {
+  .hb-breadcrumb {
+    background: inherit;
+    word-break: break-all;
+    .breadcrumb-item {
+      font-size: 0.875rem;
+      letter-spacing: 0;
+      color: $hb-dark-grey;
+      margin-right: 12px;
+      cursor: pointer;
+      a {
+        color: inherit;
+      }
+      &::before {
+        color: inherit;
+        border-style: solid;
+        border-color: inherit;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 2px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        content: '';
+        margin-right: 8px;
+        margin-bottom: 2px;
+      }
+      &.active {
+        color: $hb-black;
+        pointer-events: none;
+        font-family: Roboto Medium;
+      }
+      & + .breadcrumb-item {
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* PAGE HEADING */
+
+.hb-page-heading-container {
+  width: 100%;
+  .hb-page-heading {
+    font-size: 1.75rem;
+  }
+}
+
+/* Toastr component */
+.toast-container {
+  .hb-toaster {
+    width: 80%;
+    margin: auto;
+    background: $hb-white 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 16px $hb-box-shadow-color;
+    border-radius: 4px;
+    padding: 1rem 1rem 1rem 4rem;
+    position: relative;
+    pointer-events: auto;
+    cursor: pointer;
+    & + .hb-toaster {
+      margin-top: 0.5rem;
+    }
+    @each $type, $object in $toast-type {
+      &.toast-#{$type} {
+          border-left: 1rem solid map-get($object, 'color');
+          &::before {
+            content: ' ';
+            height: 2rem;
+            width: 2rem;
+            overflow: hidden;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1rem;
+             }
+      }
+    }
+    .toast-title {
+      font: {
+        size: 1rem;
+        family: Roboto Medium;
+      }
+    }
+  }
+}
+
+/* COMMON SCSS */
+
+/* UTILITIES */
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.vertically-middle-align {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hb-roboto-light {
+  font-family: Roboto Light;
+}
+
+.hb-roboto-regular {
+  font-family: Roboto Regular;
+}
+
+.hb-roboto-medium {
+  font-family: Roboto Medium;
+}
+
+.hb-roboto-bold {
+  font-family: Roboto Bold;
+}
+
+/* UTILITIES */
+
+/* Override the scrollback css */
+.cdk-global-scrollblock {
+  overflow-y: auto;
+}
+
+@include media-breakpoint-up(lg) {
+  .hb-accordion-type-2 {
+    .hb-accordion-panel {
+      margin: 0 0 0.6rem 0;
+      color: $hb-body-font;
+      position: relative;
+      border-radius: 8px !important;
+      &:not(:last-child) {
+        border-bottom: 1px solid $hb-grey-border;
+      }
+      .hb-accordion-header {        
+        background-color: aqua;
+        min-height: 48px;
+        border-radius: 8px;
+        font-family: Roboto Medium;
+        padding-left: 1.5rem;
+        &:hover:not([aria-disabled=true]),
+        &.mat-expanded:focus {
+          background: $hb-white;
+        }
+        .mat-expansion-panel-header-title {
+          color: $hb-body-font;
+        }
+        .mat-content {
+          align-items: center;
+        }
+      }
+      .mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+          padding: 0;
+          .hb-accordion-content {
+            padding: 1rem 1.5rem 1.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .hb-tabs-container {
+    .hb-tab-group {
+      .mat-tab-header {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+/* max-width for overlay container */
+.hb-max-width-overlay {
+  width: 850px;
+}

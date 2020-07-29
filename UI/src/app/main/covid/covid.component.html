@@ -1,0 +1,78 @@
+<ng-template #covidTemplate >
+  <div class="content" role="main">    
+    <div class="inbox_msg"> 
+      <div class="mesgs">        
+    <span class="channel_heading">Our Bot is {{isBotActive==true? 'Online':'Offline'}}</span>
+        <div #scrollMe class="msg_history"> 
+          <div  *ngIf="!isBotActive" class="loading"></div>
+          <li class="message" *ngFor="let message of messages">
+            <div
+              *ngIf="
+                message.incomming === true;
+                then incoming_msg;
+                else outgoing_msg
+              "
+            ></div>
+            <ng-template #incoming_msg>              
+             
+              <div class="incoming_msg">
+                <div class="incoming_msg_img">
+                  <img
+                    src="https://i.imgur.com/k2PZLZa.png"
+                    alt="User avatar"
+                  />
+                </div>
+                <div class="received_msg">
+                  <div class="received_withd_msg">
+                    <p>{{ message.text }}</p>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template #outgoing_msg>
+              <div class="outgoing_msg">
+                <div class="sent_msg">
+                  <p>{{ message.text }}</p>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+        </div>
+        <div class="type_msg" [ngClass]="{'hb-disabled': isBotActive===false}">
+          <input placeholder="Type a messeage" id="Question" class="form-control  bot-input"  id="Question" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" />
+          <img src="assets/images/send.png" alt=""
+          class=" bot-input-pic"  (click)="sendMessage()" width="70" height="70"> 
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="ms-covid-container" >
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreateDiscussion">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreateDiscussionHeading">
+        Ask Covid reated question
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreateDiscussionModalCloseBtn" (click)="navigateToBack()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreateDiscussionModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreateDiscussionBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="covidTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+     
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,214 @@
+@import './../../../../assets//scss/variables';
+@import './../../../../assets//scss/mixins';
+
+.watson {
+    p {
+      font-size: 2.5rem;
+      padding: 1.5rem;
+      width: 100%;
+    }
+    button {
+      font-size: 1rem;
+      padding: 0.9rem;
+      margin: 2rem 0.5rem;
+      min-width: 12rem;
+      i {
+        font-size: 1.6rem;
+        margin-right: 0.6rem;
+      }
+    }
+    .stream {
+      background-color: #fff;
+      margin: 0 auto;
+      width: 90%;
+      .mat-progress-bar {
+        margin-top: -0.3rem;
+        position: fixed;
+        width: inherit;
+      }
+      .stream-content {
+        display: flex;
+        margin: 0 auto;
+        min-height: 11rem;
+        padding: 1rem;
+        i {
+          color: #ddd;
+          font-size: 3rem;
+        }
+        .fa-quote-right {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  
+
+.hb-documents-container {
+    background-color: antiquewhite;
+    .hb-doc-heading-section {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+        .hb-page-heading {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            padding: 0 1rem 1rem 1rem;
+            letter-spacing: 0;
+          }
+    }
+    .hb-documents-tab-section {
+        padding: 0;
+        .hb-tabs-container {
+            background-color: $hb-white;
+            border: 0.5px solid $hb-grey-border;
+            border-radius: 8px;
+            .hb-tab-group {
+                ::ng-deep .mat-tab-label,
+                ::ng-deep .mat-tab-label-active {
+                    width: 50%;
+                    min-height: 54px;
+                    font-size: 0.75rem;
+                    .mat-tab-label-content {
+                        flex-direction: column;
+                    }
+                }
+                ::ng-deep .mat-tab-header {
+                    .mat-tab-label-container {
+                        .mat-tab-list {
+                            .mat-tab-labels {
+                                .mat-tab-label {
+                                    &:not(:last-child) {
+                                        margin-right: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ::ng-deep .mat-tab-body-wrapper{
+                    .mat-tab-body{
+                    	&.mat-tab-body-active {
+                        overflow: auto;
+                      }
+											.hb-tab-content {
+												padding: 0.5rem 1rem 0;
+												margin-bottom: 2rem;
+												@include drwaer-view-mobile;
+												.hb-document-filter-block {
+														.mat-expansion-panel {
+																box-shadow: none;
+																&.mat-expanded {
+																		overflow: visible;
+																}
+														}
+												}
+												.hb-filter {
+														line-height: 24px;
+														height: 24px;
+														.hb-icon {
+																vertical-align: baseline;
+														}
+														.filter-txt {
+																padding-left: 5px;
+																line-height: 1;
+														}
+												}
+												.hb-button-group {
+														.hb-review-btn {
+																&[data-badge]:after {
+																		content:attr(data-badge);
+																		position:absolute;
+																		top:-10px;
+																		right:-10px;
+																		font-size: 0.75rem;
+																		background: $hb-form-field-error;
+																		color:$hb-white;
+																		width:24px;
+																		height:24px;
+																		border-radius:50%;
+																		display: flex;
+																		justify-content: center;
+																		align-items: center;
+																}
+																&[data-badge=""]:after {
+																		content:none;
+																}
+														}
+												}
+												.hb-doc-inbox-list-container {
+														margin-bottom: 2rem;
+														.hb-doc-inbox-list {
+																@include hb-global-doc-list-view('doc-inbox');
+														}
+												}
+												.hb-doc-review-list-container {
+														margin-bottom: 2rem;
+														.hb-doc-review-list {
+																@include hb-global-doc-list-view('doc-review');
+														}
+												}
+											}
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    .hb-documents-container {
+        .hb-doc-heading-section {
+            padding: 0 1.5rem;
+        }
+        .hb-documents-tab-section {
+            .hb-tabs-container {
+                .hb-tab-group {
+                    ::ng-deep .mat-tab-label,
+                    ::ng-deep .mat-tab-label-active {
+                        font-size: 0.875rem;
+                        .mat-tab-label-content {
+                            flex-direction: row;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .hb-documents-container {
+        .hb-doc-heading-section {
+            padding: 0 2.5rem;
+        }
+        .hb-documents-tab-section {
+            padding: 0 2.5rem;
+            .hb-tabs-container {
+                .hb-tab-group {
+                    .hb-tab-content {
+                        padding: 0.5rem 1.5rem 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Add note / Delete Document Overlay */
+.hb-add-note-overlay-container,
+.hb-delete-doc-overlay-container {
+    .form-group {
+        .hb-info-text {
+            font-size: 11px;
+        }
+    }
+}
+.loader{
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    width: 100%;
+    color: white;
+    height: 50vh;
+    text-align: center;
+    font-size: 30px;
+}

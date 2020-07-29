@@ -1,0 +1,45 @@
+{
+  "name": "question",
+  "plural": "questions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "quizname": {
+      "type": "string",
+      "required": true
+    },
+    "createdby": {
+      "type": "string",
+      "required": true
+    },
+    "topicname": {
+      "type": "string",
+      "required": true
+    },
+    "questionText": {
+      "type": "string",
+      "required": true
+    },
+    "options": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "answer": {
+      "type": "string",
+      "required": true
+    },
+    "selectedOption": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,139 @@
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins/_breakpoints";
+
+/* BRANDING */
+$hb-primary-color: #0C2577;
+$hb-secondary-color: #002891;
+
+/* COLORS */
+$hb-white: #FFFFFF;
+$hb-off-white: #FAFAFA;
+$hb-black: #0D0D0D;
+$hb-grey: #CACACA;
+$hb-dark-grey: #545454;
+$hb-blue: #f51717;
+$hb-red: #E30000;
+$hb-green: #2E8500;
+$hb-light-green: #F6FFF2;
+
+$hb-light-blue: #002891;
+
+/* GLOBAL START */
+$transaction-types: (
+    "active": #359A00,
+    "closed": #0C2577,
+    "expired": #545454,
+    "withdrawn": #545454,
+    "off-market": #545454,
+    "voided": #545454,
+    "pending": #FF8900,
+    "incomplete": #FF8900,
+    "buyerNew": #CE3676,
+    "offer-only": #CE3676,
+);
+$progress-spinner: (
+    "green": #359A00,
+    "orange": #FF8900,
+    "reddishPink": #CE3676,
+    "red": #E30000,
+);
+$doc-statuses: (
+    'approved': #359A00,
+    'pending': #FF8900,
+    "empty": #909090,
+    "unassigned": #E30000,
+    "received": #359A00,
+    "failed": #E30000
+);
+$task-statuses: (
+    'completed': #2E8500,
+    'in-process': #FF8900,
+    "cancelled": #545454,
+    "ready-for-review": #CE3676,
+);
+$hb-body-font: $hb-black;
+$hb-grey-border: $hb-grey;
+$hb-dark-grey-border: $hb-dark-grey;
+$hb-off-white-bg: $hb-off-white;
+$hb-box-shadow-color: rgba(0,0,0,0.12);
+$btn-disabled-color: $hb-grey;
+$hb-form-label-color: $hb-dark-grey;
+$hb-form-field-error: $hb-red;
+$hb-form-field-error-bg-color: #fff2f0;
+$hb-positive-link-color: $hb-light-blue;
+$hb-negative-link-color: $hb-red;
+$hb-app-warning-bg-color: #ffbc22;
+$hb-checkbox-bg-color: $hb-white;
+$hb-checkbox-stroke-color: $hb-blue;
+$hb-checkbox-disabled-bg-color: $hb-grey;
+
+/* BUTTON */
+$hb-primary-btn-type-1-bg-color: $hb-blue;
+$hb-primary-btn-type-1-border-color: $hb-blue;
+$hb-primary-btn-type-1-color: $hb-white;
+$hb-primary-btn-type-2-bg-color: $hb-black;
+$hb-primary-btn-type-2-border-color: $hb-grey-border;
+$hb-primary-btn-type-2-color: $hb-white;
+$hb-seconadry-btn-bg-color: $hb-off-white-bg;
+$hb-seconadry-btn-border-color: $hb-grey-border;
+$hb-seconadry-btn-color: $hb-black;
+
+/* GLOBAL END */
+
+$toast-type: (
+    'error': (
+        'color': #E30000,
+        'image': 'Alert_White.svg'
+    ),
+    'info': (
+        'color': #0034DD,
+        'image': 'info-circle.svg'
+    ),
+    'success': (
+        'color': #2E8500,
+        'image': 'Check_White.svg'
+    ),
+);
+
+/* HEADER */
+$hb-desktop-nav-active-link-border-color: $hb-light-blue;
+$hb-search-expanded-bg-color: $hb-light-blue;
+$hb-search-expanded-color: $hb-white;
+$hb-user-dropdown-expanded-bg-color: $hb-light-blue;
+$hb-user-dropdown-expanded-color: $hb-white;
+$hb-mobile-nav-active-link-color: $hb-light-blue;
+$hb-mobile-nav-active-link-border-color: $hb-light-blue;
+$hb-feed-notification-bg-color: $hb-light-blue;
+
+/* LOGIN */
+$hb-login-link-color: $hb-blue;
+
+/* TRANSACTIONS */
+$hb-agent-email-color: $hb-light-blue;
+
+/* CREATE TRANSACTION */
+$hb-positive-alert-msg-color: $hb-green;
+$hb-positive-alert-msg-bg-color: $hb-light-green;
+$hb-check-icon-color: $hb-green;
+$hb-tab-bg-color: $hb-white;
+$hb-tab-color: $hb-black;
+$hb-active-tab-bg-color: $hb-black;
+$hb-active-tab-color: $hb-white;
+
+/* MY FEED */
+$hb-my-feed-header-bg-color: $hb-blue;
+$hb-my-feed-header-color: $hb-white;
+$hb-active-feed-border-color: $hb-light-blue;
+$hb-active-feed-indicator-color: $hb-light-blue;
+
+/* MY FEED OVERLAY */
+$hb-file-import-link-color: #0033ff;
+$hb-task-complete-bg-color: #ff8900;
+$hb-task-pending-bg-color: #848484;
+$hb-doc-upload-section-header-bg-color: #f2f2f2;
+$hb-pdf-view-section-bg-color: #f5f5f5;
+$hb-pdf-view-section-color: #989898;
+$hb-primary-btn-bg-color: #2963a3;
+$hb-primary-btn-color: $hb-white;
+$hb-form-property-label-color: #ffa881;

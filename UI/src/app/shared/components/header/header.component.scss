@@ -1,0 +1,338 @@
+@import './../../../../assets/scss/variables';
+@import './../../../../assets/scss/mixins';
+
+.hb-header {
+    padding: 2rem 1rem 1rem 1rem;
+    background-color: $hb-white;
+    min-height: 100px;
+    box-shadow: -10px 0px 0px 0px $hb-white, 10px 0px 0px 0px $hb-white, 0px -5px 0px 0px $hb-white, 0px 2px 8px $hb-box-shadow-color;
+    .hb-logo {
+        height: 100%;
+        width: auto;
+        &.hb-homebase-logo {
+            width: 150px;
+        }
+    }
+    .hb-global-search-container {
+        background-color: rgba(0,0,0,0.5);
+        box-shadow: 0px 4px 16px $hb-box-shadow-color;
+        border-radius: 8px;
+        position: absolute;
+        width: calc(100% + 2rem);
+        top: -78px;
+        height: 100vh;
+        overflow: auto;
+        left: 0;
+        transform: translate(-1rem, 0rem);
+        .hb-global-search-content {
+            padding: 1rem;
+            width: calc(100% - 3rem);
+            background: $hb-white;
+            min-height: 100vh;
+            position: absolute;
+            right: 0;
+            .hb-search-container {
+                padding: 0;
+                app-dropdown {
+                    width: 140px;
+                    ::ng-deep .form-control {
+                        height: 32px;
+                        border-radius: 4px 0 0 4px;
+                        line-height: 1;
+                    }
+                    ::ng-deep .hb-icon {
+                        top: 10px;
+                    }
+                }
+                .hb-search-box-container {
+                    @include hb-search;
+                    .hb-search {
+                        border-radius: 4px 0 0 4px;
+                    }
+                    .hb-search-btn {
+                        transition: background-color 250ms linear;
+                        &.active {
+                            background-color: $hb-blue;
+                        }
+                        .hb-icon {
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                }
+            }
+            .hb-search-filter-panel-container {
+                padding: 0;
+            }
+        }
+    }
+}
+.dc7ed9a5e04b6acb575f721fa13b8c10 {
+  height: 100%;
+  line-height: 48px;
+  display: flex;
+}
+
+@mixin hb-user-image-and-name($image-height, $image-width) {
+    .hb-user-image-container {
+        border-radius: 50%;
+        border: 0.5px solid $hb-dark-grey-border;
+        height: $image-height;
+        width: $image-width;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .hb-user-image {
+            height: 100%;
+            width: 100%;
+            border-radius: inherit;
+        }
+        .hb-user-image-name {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.hb-nav-mobile {
+    z-index: 3;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    .hb-mobile-nav-backdrop {
+        background: rgba(0,0,0,0.5);
+    }
+    .hb-mobile-nav-container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        overflow-y: auto;
+        width: calc(100% - 3rem);
+        background: $hb-off-white-bg 0% 0% no-repeat padding-box;
+        overflow-x: hidden;
+        .hb-mobile-nav-content {
+            max-height: 100%;
+            .hb-user {
+                background: $hb-white;
+                @include hb-user-image-and-name(51px,51px);
+                .hb-change-photo {
+                    font-family: Roboto Regular;
+                    font-size: 0.625rem;
+                }
+                .hb-user-details-container {
+                    .hb-user-name {
+                        font-size: 0.875rem;
+                        font-family: Roboto Medium;
+                    }
+                    .hb-user-type {
+                        font-size: 0.75rem;
+                    }
+                    .hb-user-location {
+                        .hb-form-label {
+                            text-transform: uppercase;
+                            font-size: 0.625rem;
+                        }
+                        .hb-field-content {
+                            letter-spacing: 0;
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+                .hb-horizontal-separator {
+                    border-top: 0.5px solid $hb-grey-border;
+                }
+            }
+            .navbar {
+                #HBHeaderMobileNav {
+                    .hb-nav-item-container {   
+                        .navbar-nav {
+                            .nav-item {
+                                padding: 0 1rem 0 1.5rem;
+                                letter-spacing: 0;
+                                border-left: 4px solid transparent;
+                                &.active {
+                                    color: $hb-mobile-nav-active-link-color;
+                                    border-left: 4px solid $hb-mobile-nav-active-link-border-color;
+                                }
+                                &:last-child {
+                                    .nav-link {
+                                        border: none;   
+                                    }
+                                }
+                                .nav-link {
+                                    padding: 1rem 0;
+                                    color: inherit;
+                                    font-size: 0.975rem;
+                                    border-bottom: 0.5px solid $hb-grey-border;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    .hb-icon {
+                                        vertical-align: sub;
+                                    }
+                                    .hb-feed-notification {
+                                        letter-spacing: -0.22px;
+                                        color: $hb-white;
+                                        background: $hb-feed-notification-bg-color;
+                                        font-size: 0.6375rem;
+                                        border-radius: 4px;
+                                        padding: 2px 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .hb-header {
+        padding: 2.25rem 1.5rem 1rem;
+        .hb-global-search-container {
+            top: -80px;
+            width: calc(100% + 3rem);
+            transform: translate(-1.5rem, 0rem);
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+  .hb-header {
+    padding: 2rem 2.5rem 0;
+
+    .hb-nav-container {
+      .navbar {
+        #HBHeaderNav {
+          .hb-nav-item-container {
+            .navbar-nav {
+              .nav-item {
+                &:not(:first-child) {
+                  margin-left: 1rem;
+                }
+
+                letter-spacing: 0.22px;
+                text-transform: capitalize;
+
+                &.active, &:hover, &:active, &:focus {
+                  .nav-link {                                       
+                    color: white;
+                    border-bottom: 2px solid $hb-desktop-nav-active-link-border-color;
+                    font-family: Roboto Medium;
+                  }
+                }
+
+                .nav-link {
+                  color: inherit;
+                  font-size: 0.875rem;
+                  padding: 0 0 1rem 0;
+                  border-bottom: 2px solid transparent;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+
+          .hb-logged-user-info {
+            @include hb-dropdown(135%, 0, auto, auto);
+            .hb-dropdown {
+              .hb-dropdown-button {
+                font-size: 0.75rem;
+                .hb-user-short-name {
+                  background-color: white;
+                  border: 1px solid $hb-dark-grey-border;
+                  border-radius: 60%;
+                  transition: all 0.1s linear;
+                  width: 40px;
+                  height: 36px;
+                  display: inline-flex;
+                  padding: 0;
+                  align-items: center;
+                  justify-content: center;
+
+                  &.expanded {
+                    background-color: $hb-user-dropdown-expanded-bg-color;
+                    color: $hb-user-dropdown-expanded-color;
+                  }
+                }
+              }
+
+              .hb-dropdown-menu {
+                .hb-user {
+                  background: $hb-white;
+                  @include hb-user-image-and-name(53px, 53px);
+
+                  .hb-user-details-container {
+                    .hb-user-name {
+                      font-size: 0.875rem;
+                      font-family: Roboto Medium;
+                    }
+
+                    .hb-user-type {
+                      font-size: 0.75rem;
+                    }
+
+                    .hb-user-location {
+                      .hb-form-label {
+                        text-transform: uppercase;
+                        font-size: 0.625rem;
+                      }
+
+                      .hb-field-content {
+                        letter-spacing: 0;
+                        font-size: 0.75rem;
+                      }
+                    }
+                  }
+                }
+
+                .hb-logout-section {
+                  border-top: 0.5px solid $hb-dark-grey-border;
+                }
+              }
+            }
+          }
+
+          .hb-search-button {
+            background: $hb-off-white-bg 0% 0% no-repeat padding-box;
+            border: 0.5px solid $hb-grey-border;
+            border-radius: 4px;
+            padding: 0.35rem 0.75rem;
+            margin-left: 2rem;
+            line-height: 1;
+
+            .hb-search {
+              vertical-align: baseline;
+            }
+          }
+        }
+      }
+    }
+
+    .hb-global-search-container {
+      width: 100%;
+      top: -40px;
+      height: auto;
+      transform: none;
+      overflow: visible;
+
+      .hb-global-search-content {
+        padding: 1rem;
+        width: 100%;
+        position: relative;
+        min-height: auto;
+
+        .hb-search-container {
+          padding: 0 2.5rem;
+        }
+
+        .hb-search-filter-panel-container {
+          padding: 0 2.5rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="col-12 p-0 hb-overlay-container" [style.height.px]="overlayHeight" id="HBOverlay" *ngIf="isShowOverlay"
+    [@slideInOutAnimation]="{value: isShowOverlay ? ':enter': ':leave'}"
+    (@slideInOutAnimation.done)="onAnimationCompletion()">
+    <div class="col-12 p-0 hb-overlay-backdrop" id="HBOverlayBackdrop" (click)="backdropClicked()"></div>
+    <div class="col-12 hb-overlay-content-container" id="HBOverlayContentContainer"
+        [ngClass]="{'hb-show-footer' : overlayOptions?.showFooter }">
+        <div class="col-12 p-0 pr-0 pr-lg-4 row align-items-center justify-content-end hb-overlay-header-container">
+            <button mat-button class="hb-overlay-close" id="HBOverlayCloseIconContainer" (click)="closeOverlay()">
+                <span class="d-none d-lg-inline">Close</span> <img src="assets/images/icons/Cross.svg" alt="Close Icon"
+                    id="HBOverlayCloseIcon" class="ml-2 hb-icon" />
+            </button>
+        </div>
+        <div class="col-12 hb-overlay-content row align-items-center" id="HBOverlayContent" [ngClass]="overlayOptions?.panelClass">
+            <div class="col-12 p-0 hb-overlay-projected-content">
+                <ng-template [ngTemplateOutlet]="template"></ng-template>
+            </div>
+        </div>
+        <div class="col-12 row justify-content-center align-items-center hb-overlay-footer" id="HBOverlayFooter"
+            *ngIf="overlayOptions?.showFooter || false">
+            <ng-content select="[OverlayFooter]"></ng-content>
+        </div>
+    </div>
+</div>

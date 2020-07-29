@@ -1,0 +1,10 @@
+<div class="col-12 p-0" class="hb-select-dropdown" (click)="openSelectBox()" [ngClass]="{'hb-disabled': disabled }">
+    <mat-select #matSelect [id]="inputLabelId" name="materialSelectBox" class="form-control" disableOptionCentering
+        (selectionChange)="selectionChanged($event)" [value]="value" disableRipple="true" [panelClass]="'hb-select'"
+        [disabled]="disabled">
+        <mat-option value="" *ngIf="isShowChooseOption">-- choose --</mat-option>
+        <mat-option *ngFor="let option of dropdownData" [value]="option.value">{{option.label}}</mat-option>
+    </mat-select>
+    <img [ngClass]="{'rotate': matSelect.panelOpen}" src="assets/images/icons/Down_Arrow.svg" alt="Accordion Arrow"
+        id="HbSelectDropDownIcon" class="hb-icon" />
+</div>

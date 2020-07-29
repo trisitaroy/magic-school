@@ -1,0 +1,37 @@
+{
+  "name": "inbox",
+  "plural": "inboxs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "fromname": {
+      "type": "string",
+      "required": true
+    },
+    "fromrole": {
+      "type": "string",
+      "required": true
+    },
+    "fromemail": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "required": true
+    },
+    "tousername": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "acls": [],
+  "methods": {}
+}

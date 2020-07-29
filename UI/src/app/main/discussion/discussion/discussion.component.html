@@ -1,0 +1,351 @@
+<div class="col-12 ms-discussions" id="MSDiscussion">
+  <section class="hb-section" id="MSDiscussionSection1"  *ngIf="listDiscussion.length>0" >
+      <div class="row justify-content-end ms-discussion-header-container">
+         <a style="cursor: pointer;color: blue;text-decoration: underline;" class="nav-link"
+         (click)="getDiscussion()">
+         Clear Filter
+         </a>
+          <div class="row align-items-center ms-discussion-actions" id="MSDiscussionActions">                
+              <div class="hb-sorting-container">
+                  <span class="mr-1">Showing  : </span>
+                  <span class="font-weight-bold">{{sortFor}}</span>
+                  <img src="assets/images/icons/Down_Arrow.svg" alt="Dropdown Arrow" id="HbSortInfoIcon"
+                      class="ml-2 hb-icon hb-arrow" />
+                  <div class="hb-sort-menu" id="HBHeaderDropdownMenu">
+                      <div class="hb-sort-menu-items">
+                          <ul class="nav nav-pills align-items-center nav-fill hb-tab" id="HBSortTabList">
+                              <li class="nav-item" *ngFor="let sortMode of sortModeList; let i=index;" role="tab"
+                                  [id]="'HBSortTabList' + sortMode?.label">
+                                  <a class="nav-link" [ngClass]="{'active': (selectedTabIndex === i)}"
+                                      (click)="tabSelected(i)">
+                                      <img src="assets/images/icons/Check_Blue.svg" alt="Check Icon"
+                                          [id]="'HBSortTabList' + sortMode?.label + 'checkIcon'"
+                                          *ngIf="selectedTabIndex === i" class="hb-icon hb-check-icon" />
+                                      {{sortMode?.label}}
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="hb-section" id="MSDiscussionSection2" style="background-color:aqua;padding-top: 10px;">
+       <div class="mb-4 ms-discussion-body" *ngIf="!isCardView" id="MSDiscussionListView">
+         <h4 style="height: 50px; font-size: x-large;" *ngIf="listDiscussion.length===0">No Discussion Availabe for you</h4>
+          <div class="row align-items-center ms-discussion-list" *ngFor="let card of listDiscussion; let i=index" 
+              [id]="'MSDiscussionList' + i" >
+              <div class="weekContainer">
+                <div class="maindiv">
+                    <div class="wrapper-263" aria-hidden="true">
+                       <ul class="coinList-265"></ul>
+                    </div>
+                    <div>
+                       <div class="isFocused-83">
+                          <div class="card-224">
+                             <div class="y-block qaThreadStarter block-267">
+                                <div class="y-block block-268"></div>
+                                <div class="y-block block-269">
+                                   <div class="fixedGridRow-189">
+                                      <div class="y-fixedGridColumn fixedGridColumn-190">
+                                         <div class="fixedGridRow-272">
+                                            <div class="y-fixedGridColumn fixedGridColumn-204">
+                                               <span aria-hidden="true">
+                                                  <a tabindex="-1" class="link-227">
+                                                     <span class="undefined lpc-hoverTarget">
+                                                        <span aria-hidden="true">
+                                                           <div class="avatar-330">
+                                                              <div role="presentation" class="ms-Persona-coin ms-Persona--size32 coin-180">
+                                                                 <div role="presentation" class="ms-Persona-imageArea imageArea-332">
+                                                                    <div class="ms-Persona-initials initials-340" aria-hidden="true">
+                                                                      <span> {{card?.shortName}}</span></div>
+                                                                 </div>
+                                                              </div>
+                                                           </div>
+                                                        </span>
+                                                     </span>
+                                                  </a>
+                                               </span>
+                                            </div>
+                                            <div class="y-fixedGridColumn fixedGridColumn-190">
+                                               <div class="metadata-270">
+                                                  <div class="avatarColumn-271">
+                                                     <span class="text-273">
+                                                       <a class="link-274">
+                                                        <span class="undefined lpc-hoverTarget">
+                                                          <span dir="auto">{{ card?.askedBy }}({{ card?.role }})</span></span></a></span>
+                                                     <div class="y-block block-275">
+                                                        <div class="fixedGridRow-241">
+                                                           <div class="y-fixedGridColumn fixedGridColumn-204">
+                                                             <a class="link-42" >
+                                                               <time datetime="2020-07-22T13:30:13.947Z">{{ card?.Date }}</time></a></div>
+                                                           <div class="y-fixedGridColumn fixedGridColumn-204"></div>
+                                                           <div class="y-fixedGridColumn fixedGridColumn-204"></div>
+                                                        </div>
+                                                     </div>
+                                                  </div>
+                                                  <div>
+                                                     <div class="verticalAlign-191">
+                                                        <div class="inner-192">
+                                                           <span class="text-107">
+                                                              <div class="fixedGridRow-189">
+                                                                 <div class="y-fixedGridColumn fixedGridColumn-204">{{card?.subject | titlecase}}</div>
+                                                              </div>
+                                                           </span>
+                                                        </div>
+                                                     </div>
+                                                  </div>
+                                               </div>
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="y-block block-278">
+                                   <div class="y-block block-201">
+                                      <div class="y-block contentStateBody-280" dir="ltr">
+                                         <div class="inner-281">
+                                            <span class="text-45" lang="en">
+                                              <p style="font-weight: bold;" class="paragraph-282">{{ card?.question }}</p>
+                                            </span>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="root-283">
+                                   <div class="y-block block-284">
+                                      <div role="menubar" aria-orientation="horizontal" class="ms-FocusZone css-145 ms-OverflowSet root-642" data-focuszone-id="FocusZone66">
+                                         <div class="ms-OverflowSet-item item-643">
+                                           <button type="button" role="menuitem" class="ms-Button ms-Button--commandBar root-289" aria-label="Like Shankar A's message" data-is-focusable="true">
+                                             <span class="ms-Button-flexContainer flexContainer-73" data-automationid="splitbuttonprimary">
+                                              <img src="assets/images/icons/liked.png" *ngIf="card?.liked" height="30" width="30">
+                                              <img src="assets/images/icons/like.png" *ngIf="!card?.liked" height="30" width="30" (click)="likePost(card?.id,card?.askedByUsername)"> 
+                                               <span class="ms-Button-textContainer textContainer-74 d-none d-md-block">
+                                                 <span class="ms-Button-label label-291" id="id__1127">Like</span>
+                                                </span>
+                                              </span>
+                                              </button>
+                                            </div>
+                                         <div class="ms-OverflowSet-item item-643">
+                                           <button type="button" role="menuitem" class="ms-Button ms-Button--commandBar root-289" aria-label="Comment on Shankar A's message" data-is-focusable="true">
+                                             <span class="ms-Button-flexContainer flexContainer-73" data-automationid="splitbuttonprimary">
+                                              <img src="assets/images/icons/Comments.svg" height="30" width="30" (click)="willReply(card?.id)"> 
+                                                <span class="ms-Button-textContainer textContainer-74">
+                                                  <span class="ms-Button-label label-291" id="id__1130">{{ card?.totalAns }}</span>
+                                                </span>
+                                              </span>
+                                            </button>
+                                          </div>  
+                                          <div class="ms-OverflowSet-item item-643 d-none d-lg-block">
+                                             <button type="button" role="menuitem" class="ms-Button ms-Button--commandBar root-289" aria-label="Comment on Shankar A's message" data-is-focusable="true">
+                                               <span class="ms-Button-flexContainer flexContainer-73" data-automationid="splitbuttonprimary">
+                                                <img src="assets/images/icons/translate.png" height="30" width="30" (click)="translate(card?.id)"> 
+                                                  <span class="ms-Button-textContainer textContainer-74">
+                                                    <span class="ms-Button-label label-291" id="id__1130"></span>
+                                                  </span>
+                                                </span>
+                                              </button>
+                                            </div> 
+                                            <div class="ms-OverflowSet-item item-643 " *ngIf="card.isTranslate && olanguageList && olanguageList.length>0">
+                                             <app-dropdown style="height:50px;width: 150px; cursor: pointer;" [dropdownData]="olanguageList" [inputLabelId]="'HBtopic'"
+                                                  [value]="olanguageList[0].value" [isShowChooseOption]="false"
+                                                  (selectedValueChange)="selectionChanged($event,'lang',card)">
+                                                </app-dropdown>
+                                            </div>                                          
+                                          <div class="ms-OverflowSet-item item-643">
+                                            <button type="button" role="menuitem" class="ms-Button ms-Button--commandBar root-289" aria-label="Comment on Shankar A's message" data-is-focusable="true">
+                                              <span class="ms-Button-flexContainer flexContainer-73" data-automationid="splitbuttonprimary">
+                                                <img src="assets/images/icons/Trash.svg" height="30" width="30" (click)="deleteFile(card)"
+                                                [ngClass]="{'hb-disabled': card?.askedBy !== (userInfo.fName +' '+userInfo.lName)}"> 
+                                                 <span class="ms-Button-textContainer textContainer-74 d-none d-md-block">
+                                                   <span class="ms-Button-label label-291" id="id__1130">Delete</span>
+                                                 </span>
+                                               </span>
+                                             </button>
+                                           </div>
+                                        </div>
+                                   </div>
+                                   <div>
+                                      <div class="verticalAlign-293">
+                                         <div class="inner-192">
+                                            <div class="y-block block-294">
+                                               <div class="fixedGridRow-189">
+                                                  <div class="y-fixedGridColumn fixedGridColumn-204"></div>
+                                                  <div class="y-fixedGridColumn fixedGridColumn-190">
+                                                     <div class="verticalAlign-191">
+                                                        <div style="color: blue; font-size: .7rem;" class="inner-192" *ngIf ="card?.totalLikes === 0">Be the first to like this</div>
+                                                        <div style="color: blue; font-size: .7rem;" class="inner-192" *ngIf ="card?.totalLikes > 0">{{card?.totalLikes}} person liked this</div>
+                                                     </div>
+                                                  </div>
+                                               </div>
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="y-block block-304">
+                                <div>
+                                   <ul class="layoutList-305">
+                                    <li class="y-layoutList--item" *ngIf="card?.showAllComment">
+                                      <div class="olderReplyPaginationControls-323">
+                                         <div class="y-block block-284"><span class="text-324">
+                                            <button class="link-326" type="button" (click)="loadMoreComment(card?.id)">
+                                           <span class="y-fakeLink">Show previous comments</span>
+                                          </button></span></div>
+                                         <div class="verticalAlign-293">
+                                            <div class="inner-192"></div>
+                                         </div>
+                                      </div>
+                                   </li>
+                                    <li class="y-layoutList--item qaThreadReply" *ngFor="let message of card.ansList; let i = index;">
+                                        <div class="fixedGridRow-189">
+                                          <div class="y-fixedGridColumn fixedGridColumn-204">
+                                              <div class="y-block block-307">
+                                                <span aria-hidden="true">
+                                                    <a tabindex="-1" class="link-227">
+                                                      <span class="undefined lpc-hoverTarget">
+                                                          <span aria-hidden="true">
+                                                            <div class="avatar-330">
+                                                                <div role="presentation" class="ms-Persona-coin ms-Persona--size32 coin-180">
+                                                                  <div role="presentation" class="ms-Persona-imageArea imageArea-332">
+                                                                    <div class="ms-Persona-initials initials-340" aria-hidden="true"><span>
+                                                                      {{message?.shortName}}
+                                                                    </span></div>
+                                                                  </div>
+                                                                </div>
+                                                            </div>
+                                                          </span>
+                                                      </span>
+                                                    </a>
+                                                </span>
+                                              </div>
+                                          </div>
+                                          <div class="y-fixedGridColumn fixedGridColumn-190">
+                                              <div class="y-block block-308">
+                                                <div class="speechBubble-309">
+                                                    <div class="decoratorContainerWrapper-315">
+                                                      <div class="decoratorContainer-310">
+                                                          <div></div>
+                                                          <div class="rightDecorators-311"></div>
+                                                      </div>
+                                                    </div>
+                                                    <span class="text-107">
+                                                      <div class="content-316">
+                                                          <div class="name-317"><span class="text-318">
+                                                            <a class="link-274">
+                                                            <span class="undefined lpc-hoverTarget">
+                                                              <span dir="auto">{{ message?.name }} ({{ message?.role }})                                                              
+                                                            </span>
+                                                          </span></a></span></div>
+                                                          <div class="content-316">
+                                                            <a class="link-42">
+                                                              <time datetime="2020-07-22T15:23:11.559Z" title="Wednesday, July 22, 2020, 8:53:11 PM GMT+5:30">
+                                                                {{ message?.Date }}</time></a>
+                                                            </div>
+                                                      </div>
+                                                    </span>
+                                                    <span class="text-319">
+                                                      <div class="y-block contentStateBody-280" dir="ltr">
+                                                          <div class="inner-281">
+                                                            <span class="text-45" lang="en">
+                                                                <p class="paragraph-282">{{ message?.content }}</p>
+                                                            </span>
+                                                          </div>
+                                                      </div>
+                                                    </span>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                             </div>
+                              <div class="y-block block-321">
+                                <hr class="horizontalRule-322">
+                             </div>
+                             <div class="y-block block-301">
+                               <div>
+                                <div *ngIf="isPencilCicked && discussionId === card?.id">
+                                  <div class="isFocused-83">
+                                     <div class="card-866">
+                                        <div style="position: absolute; height: 100px;"></div>
+                                        <div class="y-block block-868">
+                                           <div class="editor-867">
+                                              <div>
+                                                 <span class="root-870">
+                                                  <textarea  class="ms-discussion-comment-content" type="text" [(ngModel)]="comment" ></textarea>
+                                                 </span>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <div class="commandBarItem-879">
+                                           <div style="position: relative;">
+                                              <div data-automation-id="visibleContent">
+                                                 <div class="ms-FocusZone css-145 ms-CommandBar root-880" role="menubar" data-focuszone-id="FocusZone4282">
+                                                    <div role="group" class="ms-OverflowSet ms-CommandBar-primaryCommand primarySet-883">
+                                                       <div class="ms-OverflowSet-item item-286">
+                                                       </div>
+                                                       <div class="ms-OverflowSet-item item-286"><span class="wrapper-888"><span class="divider-889"></span></span></div>
+                                                    </div>
+                                                    <div role="group" class="ms-OverflowSet ms-CommandBar-secondaryCommand secondarySet-890">
+                                                       <div class="ms-OverflowSet-item item-286">                                                        
+                                                      </div>
+                                                       <div class="ms-OverflowSet-item item-286">
+                                                        </div>
+                                                       <div class="ms-OverflowSet-item item-286">
+                                                          <div class="ms-TooltipHost root-203">
+                                                             <div>
+                                                                <button  (click)="addComment(card?.id,card?.askedByUsername)" type="button" class="ms-Button is-disabled root-893">
+                                                                   <span class="ms-Button-flexContainer" data-automationid="splitbuttonprimary">
+                                                                      <div class="y-block content-256" >
+                                                                         Add Comment
+                                                                         <div class="secondaryText-253"></div>
+                                                                      </div>
+                                                                   </span>
+                                                                </button>
+                                                             </div>
+                                                          </div>
+                                                       </div>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+
+                               <div class="fileUploadDragDropPlaceholderTarget-221" *ngIf="discussionId !== card?.id">
+                                 <button class="link-303" type="button" (click)="willReply(card?.id)">
+                                   <span class="y-fakeLink"><div class="fixedGridRow-229">
+                                     <div class="y-fixedGridColumn fixedGridColumn-204"><div class="verticalAlign-191">
+                                       <div class="inner-192"><span aria-hidden="true"><div class="avatar-330">
+                                         <div role="presentation" class="ms-Persona-coin ms-Persona--size32 coin-180">
+                                           <div role="presentation" class="ms-Persona-imageArea imageArea-332">
+                                             <div class="ms-Image ms-Persona-image image-336" style="width: 32px; height: 32px;">
+                                              <img class="ms-Image-image is-loaded ms-Image-image--cover ms-Image-image--portrait is-fadeIn image-186" src="assets/images/icons/micky.png" alt="">
+                                            </div></div>
+                                          </div>
+                                          <span class="" style="display: block; padding: 0px; border: 0px; clip: rect(0px, 0px, 0px, 0px); position: absolute; margin: -1px; height: 1px; width: 1px; overflow: hidden; overflow-wrap: normal;">Roy, Trisita (Cognizant)</span></div></span></div></div></div><div class="y-fixedGridColumn fixedGridColumn-190">
+                                            <div class="verticalAlign-191"><div class="inner-192"><div class="y-block block-230">
+                                              <div class="inner-196">Write a comment</div>
+                                            </div></div></div></div></div>
+                                          </span>
+                                      </button>
+                                </div>
+                                </div>
+                              </div>
+                          </div>
+                       </div>
+                    </div>
+               </div>
+                                          
+               </div>    
+          </div>              
+      </div>
+  </section>
+</div>
+

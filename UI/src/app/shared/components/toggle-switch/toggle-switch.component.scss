@@ -1,0 +1,6 @@
+@import './../../../../assets//scss/variables';
+@import './../../../../assets//scss/mixins';
+
+.hb-switch {
+  @include hb-slide-toggle(24px, 48px, $hb-blue, 22px, 18px, 18px, 4px, 3px);
+}

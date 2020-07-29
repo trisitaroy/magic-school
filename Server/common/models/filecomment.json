@@ -1,0 +1,32 @@
+{
+  "name": "filecomment",
+  "plural": "filecomments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "fileid": {
+      "type": "number",
+      "required": true
+    },
+    "owner": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "ownerFullName": {
+       "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

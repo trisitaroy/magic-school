@@ -1,0 +1,23 @@
+{
+  "name": "like",
+  "plural": "likes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "questionid": {
+      "type": "number",
+      "required": true
+    },
+    "userName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

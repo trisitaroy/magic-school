@@ -1,0 +1,68 @@
+<ng-template #quizTemplate >
+  <mat-card>
+    <mat-card-header>
+      <section>
+        <div mat-card-avatar class="header-image"></div>
+        <div class="mat-card-container">
+          <mat-card-title>{{topic | titlecase}} Quiz</mat-card-title>
+          <div class="row" *ngIf="topicList.length>0">
+            <div class="col-12 p-0 form-group"> 
+              <label class="hb-form-label">Choose Quiz</label>
+              <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="topicList" [inputLabelId]="'HBtopic'"
+                [value]="topicList[0].value" [isShowChooseOption]="false"
+                (selectedValueChange)="selectionChanged($event,'quizname')">
+              </app-dropdown>
+            </div>
+          </div>
+          <mat-card-subtitle>
+            <span class="subtitle1">How well do you know {{topic}}?</span>
+            <span class="subtitle2">Take the quiz and find out!</span>
+            <span style="font-weight: bold;color: red;" class="subtitle2">Total Questions: 5 Time : 1 Min</span>
+          </mat-card-subtitle>
+        </div>
+      </section>
+      <div mat-card-image class="quiz-topic-img"></div>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <p>Take this awesome quiz that will help improve your understanding of {{topic}}. See if you can beat the
+        clock! The timed questionnaire with automatic scoring provides you with a final score along with a summary of your
+        answers. Match wits with your friends! Practice to increase your knowledge. Good luck and have fun with this quiz.
+        Share and enjoy!</p>
+    </mat-card-content>
+  </mat-card>
+  
+</ng-template>
+
+<div class="hb-create-contact-container" >
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreateDiscussion">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreateDiscussionHeading">
+        Select a Quiz
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreateDiscussionModalCloseBtn" (click)="navigateToBack()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreateDiscussionModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreateDiscussionBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="quizTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+      <div class="hb-button-group" >        
+   
+        <button type="button" id="HBContactsSaveBtn" mat-button class="hb-primary-btn-type-1"
+        (click)="startQuiz()">Start the Quiz!
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>

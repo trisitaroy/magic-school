@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "member": {
+    "dataSource": "db",
+    "public": true
+  },
+  "quiz": {
+    "dataSource": "db",
+    "public": true
+  },
+  "discussion": {
+    "dataSource": "db",
+    "public": true
+  },
+  "comment": {
+    "dataSource": "db",
+    "public": true
+  },
+  "question": {
+    "dataSource": "db",
+    "public": true
+  },
+  "like": {
+    "dataSource": "db",
+    "public": true
+  },
+  "filesection": {
+    "dataSource": "db",
+    "public": true
+  },
+  "filecomment": {
+    "dataSource": "db",
+    "public": true
+  },
+  "timesheet": {
+    "dataSource": "db",
+    "public": true
+  },
+  "result": {
+    "dataSource": "db",
+    "public": true
+  },
+  "inbox": {
+    "dataSource": "db",
+    "public": true
+  },
+  "noty":{
+    "dataSource": "db",
+    "public": true
+  }
+}

@@ -1,0 +1,26 @@
+<div class="ms-dashboard-container row mt-4 mt-lg-5" id="MSDashboard">
+    <section class="col-12 ms-dashboard-section" id="MSDashboardSection1">
+        <div class="row justify-content-between align-items-center">
+            <div class="ms-page-heading-container">
+                <h1 class="m-0 ms-page-heading" id="MSDashboardHeading">
+                    Discussion
+                </h1>
+            </div>
+            <div class="ms-quick-links-container" id="MSDashboardNavContainer">
+                <nav class="ms-navbar row align-items-center" id="MSDashboardNav">
+                    <ul class="navbar-nav" id="MSDashboardNavbar">
+                        <li class="nav-item" id="MSDashboardNavItem1">
+                            <a class="nav-link" title="Transaction" id="MSDashboardAddTransaction"
+                                (click)="redirectToCreateDiscussion()">Start a New Discussion</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="col-12 ms-transaction-section" id="MSDashboardSection2">
+        <div class="col-12 p-0 ms-transaction-container" id="MSDashboardTransactionSection">
+            <app-discussion></app-discussion>
+        </div>
+    </section>
+</div>

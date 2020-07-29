@@ -1,0 +1,43 @@
+@import './../../../assets/scss/variables';
+
+.ms-login-container {
+    background-image: url('assets/images/books.jpg');
+    background-size: 100% 100%;
+    min-height: 75vh;
+    background-repeat: no-repeat;
+    padding: 1rem 0;
+    .ms-login-box {
+        background-color: white;
+        border-radius: 52px;
+        padding: 2rem;
+        .ms-login-form {
+            .ms-forgot-password {
+                font-size: 0.75rem;
+                text-decoration: underline;
+            }
+        }
+        .ms-alert-text {
+            font-size: 0.7rem;
+            color: $hb-login-link-color;
+            font-family: Roboto Medium;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .ms-login-container {
+        .ms-login-box {
+            .ms-login-form {
+                .ms-forgot-password {
+                    font-size: 0.875rem;
+                }
+            }
+        }
+    }    
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .ms-login-container {
+        height: 75vh;
+    }
+}

@@ -1,0 +1,93 @@
+<ng-template #createquizFormTemplate >
+  <form id="MSCreatequizForm"  [formGroup]="quizForm" class="hb-create-contact-form" >
+    <div class="col-12 p-0" >
+      <div class="hb-conatct-type-details">
+        <div class="hb-create-service-provider">
+          <div class="row">
+            <div class="col-6 col-md-6 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">{{!isQAdded ? 'Quiz Name' : 'Add More Question to'}}</label>
+              <input id="Question" class="form-control" [ngClass]="{'hb-disabled': isQAdded}" id="Question" formControlName="quizname"
+              [value]="quizForm.get('quizname').value" >  
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Question</label>
+              <textarea id="Question" class="form-control" id="Question" formControlName="question"
+              [value]="quizForm.get('question').value" >   
+             </textarea>         
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 col-md-3 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Option A</label>
+              <input (focusout)="onFocusOutEvent($event,0)"  maxlength="500" class="form-control" id="Description" formControlName="optionA"
+                [value]="quizForm.get('optionA').value" >
+            </div>
+            <div class="col-3 col-md-3 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Option B</label>
+              <input (focusout)="onFocusOutEvent($event,1)"   maxlength="500" class="form-control" id="Description" formControlName="optionB"
+                [value]="quizForm.get('optionB').value" >
+            </div>
+            <div class="col-3 col-md-3 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Option C</label>
+              <input (focusout)="onFocusOutEvent($event,2)" maxlength="500" class="form-control" id="Description" formControlName="optionC"
+                [value]="quizForm.get('optionC').value" >
+            </div>
+            <div class="col-3 col-md-3 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Option D</label>
+              <input (focusout)="onFocusOutEvent($event,3)"   maxlength="500" class="form-control" id="Description" formControlName="optionD"
+                [value]="quizForm.get('optionD').value" >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-md-6 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Answer</label>
+              <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="ansList" [inputLabelId]="'HBtopic'"
+                 [isShowChooseOption]="false"
+                (selectedValueChange)="selectionChanged($event,'ansList')">
+              </app-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<div class="hb-create-contact-container"  >
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreatequiz">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreatequizHeading">
+        Create quiz
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreatequizModalCloseBtn" (click)="navigateToContact()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreatequizModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreatequizBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="createquizFormTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+      <div class="hb-button-group" >
+        <button type="button" id="HBContactsCancelBtn" mat-button class="hb-secondary-btn"
+          (click)="navigateToContact()">
+          Cancel
+        </button>
+        <button type="button" id="HBContactsSaveBtn" mat-button class="hb-primary-btn-type-1"
+          (click)="saveChanges($event)" [disabled]="quizForm.invalid">
+          Save
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>

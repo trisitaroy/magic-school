@@ -1,0 +1,47 @@
+{
+  "name": "filesection",
+  "plural": "filesections",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": { 
+    "name": {
+      "type": "string",
+      "required": true
+    },  
+    "content": {
+      "type": "string",
+      "required": true
+    },   
+    "uploadedBy": {
+      "type": "string"
+    },
+    "uploadedFrom": {
+      "type": "string"
+    },
+    "uploadedDate": {
+       "type": "string"
+    },
+    "disableAudio": {
+      "type": "boolean"
+    },
+    "showAudio": {
+      "type": "boolean"
+    },
+    "showNotes": {
+      "type": "boolean"
+    },
+    "showAddNoteBtn": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

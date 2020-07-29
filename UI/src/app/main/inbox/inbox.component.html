@@ -1,0 +1,188 @@
+<div class="mb-4 ms-discussion-body"  id="MSDiscussionListView">
+   <div class="row align-items-center ms-discussion-list"  >
+       <div class="weekContainer">
+         <div class="newmsg">           
+            <div class="row" *ngIf="!isPencilCicked">               
+               <div class="col-6">
+                  <div  class="hb-button-group">
+                     <button type="button"  (click)="willReply()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                          id="HBDocumentsReadyToReviewTabReviewsBtn">
+                          New Messege
+                     </button>               
+                 </div>                 
+               </div>
+            </div>  
+               <div class="row" *ngIf="isPencilCicked">  
+               <div style="margin-bottom: 12px; width: 50%;" class="col-8">
+                  <label class="hb-form-label">Whom will you send messege?</label>
+                  <app-dropdown style="height:100px;width: fit-content;" [dropdownData]="everyOne" [inputLabelId]="'HBtopic'"
+                    [value]="everyOne[0].value" [isShowChooseOption]="false"
+                    (selectedValueChange)="selectionChanged($event,'member')">
+                  </app-dropdown>
+               </div>         
+              
+            </div> 
+              <div class="row" *ngIf="isPencilCicked">
+               <div class="col-12">
+                  <div class="isFocused-83">
+                     <div class="card-866">
+                        <div style="position: absolute; height: 100px;"></div>
+                        <div class="y-block block-868">
+                           <div class="editor-867">
+                              <div>
+                                 <span class="root-870">
+                                    <p *ngIf="isListenting===true">
+                                       <img src="assets/images/recording.gif" width="100px" height="50px;" class="mr-2 hb-icon" />
+                                   </p>
+                                  <textarea  placeholder="Type your messege" class="ms-discussion-comment-content" type="text" [(ngModel)]="messege" ></textarea>
+                                 </span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="commandBarItem-879">
+                           <div style="position: relative;">
+                              <div data-automation-id="visibleContent">
+                                 <div class="ms-FocusZone css-145 ms-CommandBar root-880" role="menubar" data-focuszone-id="FocusZone4282">
+                                    <div role="group" class="ms-OverflowSet ms-CommandBar-primaryCommand primarySet-883">
+                                       <div class="ms-OverflowSet-item item-286">
+                                       </div>
+                                       <div class="ms-OverflowSet-item item-286"><span class="wrapper-888"><span class="divider-889"></span></span></div>
+                                    </div>
+                                    <div role="group" class="ms-OverflowSet ms-CommandBar-secondaryCommand secondarySet-890">
+                                       <div class="ms-OverflowSet-item item-286">                                                        
+                                      </div>
+                                       <div class="ms-OverflowSet-item item-286">
+                                        </div>
+                                       <div class="ms-OverflowSet-item item-286">
+                                          <div *ngIf="messege || messege!==undefined" class="ms-TooltipHost root-203">
+                                             <div>
+                                                <button  (click)="send()" type="button" class="ms-Button is-disabled root-893">
+                                                   <span class="ms-Button-flexContainer" data-automationid="splitbuttonprimary">
+                                                      <div class="y-block content-256" >
+                                                         Send
+                                                         <div class="secondaryText-253"></div>
+                                                      </div>
+                                                   </span>
+                                                </button>
+                                             </div>
+                                          </div>
+                                          <div *ngIf="messege==undefined" style="margin-left: 2%;">
+                                             <button  (click)="startVoiceRecognition()" type="button" class="ms-Button is-disabled root-893">
+                                                <span class="ms-Button-flexContainer" data-automationid="splitbuttonprimary">
+                                                   <div class="y-block content-256" >
+                                                      Record
+                                                      <div class="secondaryText-253"></div>
+                                                   </div>
+                                                </span>
+                                             </button>
+                                          </div>
+                                          <div style="margin-left: 5%;">
+                                             <button  (click)="willReply()" type="button" class="ms-Button is-disabled root-893">
+                                                <span class="ms-Button-flexContainer" data-automationid="splitbuttonprimary">
+                                                   <div class="y-block content-256" >
+                                                      Close
+                                                      <div class="secondaryText-253"></div>
+                                                   </div>
+                                                </span>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div> 
+               </div>              
+              </div>            
+        </div>        
+        <h3 style="height: 50px; font-size: x-large; margin-left: 10%;" *ngIf="listinbox.length===0">Inbox Empty</h3>
+        <div class="maindiv" *ngFor="let msg of listinbox;">
+           <div class="isFocused-67">
+              <a class="qaInboxThread root-198" >
+                 <div class="y-block block-199">
+                    <div class="fixedGridRow-200">
+                       <div class="y-fixedGridColumn fixedGridColumn-126">
+                          <div class="y-block block-201">
+                             <svg viewBox="0 0 240 240" class="y-icon icon-202" aria-hidden="true" tabindex="-1" focusable="false" style="height: 8px; width: 8px;">
+                                <path fill-rule="evenodd" d="M120 240C53.726 240 0 186.274 0 120S53.726 0 120 0s120 53.726 120 120-53.726 120-120 120z"></path>
+                             </svg>
+                          </div>
+                       </div>
+                       <div class="y-fixedGridColumn fixedGridColumn-126">
+                          <div class="y-block block-203">
+                             <span aria-hidden="true">
+                                <div class="avatar-204">
+                                   <div role="presentation" class="ms-Persona-coin ms-Persona--size32 coin-206">
+                                      <div role="presentation" class="ms-Persona-imageArea imageArea-208">
+                                         <div class="ms-Persona-initials initials-236" aria-hidden="true"><span>{{msg.shortName}}</span></div>
+                                         <div class="ms-Image ms-Persona-image image-212" style="width: 32px; height: 32px;">
+                                       </div>
+                                      </div>
+                                   </div>
+                                   <span class="" style="display: block; padding: 0px; border: 0px; clip: rect(0px, 0px, 0px, 0px); position: absolute; margin: -1px; height: 1px; width: 1px; overflow: hidden; overflow-wrap: normal;">{{msg.fromname}}({{msg.fromrole}})</span>
+                                </div>
+                             </span>
+                          </div>
+                       </div>
+                       <div class="y-fixedGridColumn fixedGridColumn-83">
+                          <div class="y-block block-216">
+                             <div class="fixedGridRow-200">
+                                <div class="y-fixedGridColumn fixedGridColumn-126">
+                                   
+                                </div>
+                                <div class="y-fixedGridColumn fixedGridColumn-83">
+                                   <div class="y-block block-221">
+                                      <div class="inner-87"><span class="text-233"></span>
+                                         <span class="text-45" lang="en" dir="ltr"></span>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="y-fixedGridColumn fixedGridColumn-126">
+                                   <div class="y-block root-329">
+                                      <div class="verticalAlign-224">
+                                         <div class="inner-85">
+                                            <div class="ms-TooltipHost root-225">
+                                               <button class="link-44" aria-label="Mark conversation as read" type="button">
+                                                  <svg viewBox="0 0 240 240" class="y-icon icon-226" aria-hidden="true" tabindex="-1" focusable="false" style="height: 16px; width: 16px;">
+                                                     <path fill-rule="evenodd" d="M215.273 65.273L90 190.664l-65.273-65.39 10.546-10.547L90 169.336l114.727-114.61z"></path>
+                                                  </svg>
+                                               </button>
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="y-block block-227">
+                             <div class="inner-228"><span class="text-229"><span dir="auto">{{msg.fromname}}({{msg.fromrole}})</span>: </span><span class="text-45" lang="en" dir="ltr">#email {{msg.fromemail}}</span></div>
+                          </div>
+                          <div class="fixedGridRow-200">
+                             <div class="y-fixedGridColumn fixedGridColumn-83">
+                                <div class="y-block block-230">
+                                   <div class="y-block block-161">
+                                      <div class="inner-87">{{msg.body}}</div>
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="y-fixedGridColumn fixedGridColumn-126">
+                                <div class="verticalAlign-231">
+                                   <div class="inner-85">
+                                      <div class="y-block block-161">
+                                         <div class="inner-87"><time datetime="2020-07-19T16:58:47.730Z" title="Sunday, July 19, 2020, 10:28:47 PM GMT+5:30">{{msg.date}}</time></div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </a>
+           </div>
+        </div>                
+        </div>    
+   </div>              
+</div>

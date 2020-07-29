@@ -1,0 +1,98 @@
+@import './../../../../assets//scss/variables';
+
+.ms-dashboard-container {
+  background-color: antiquewhite;
+
+  .ms-dashboard-section {
+    padding: 0 0 1rem 0;
+
+    .ms-page-heading-container {
+      width: auto;
+
+      .ms-page-heading {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding: 0 1rem 1rem 1rem;
+        letter-spacing: 0;
+      }
+    }
+
+    .ms-quick-links-container {
+      background: $hb-light-green 0% 0% no-repeat padding-box;
+      border-radius: 8px;
+      overflow-y: hidden;
+      overflow-x: auto;
+
+      .ms-navbar {
+        padding: 0.5rem 1rem;
+        .ms-navbar-brand {
+          letter-spacing: 0.26px;
+          font-size: 1rem;
+          font-family: Roboto Bold;
+        }
+
+        .navbar-nav {
+          display: flex;
+          flex-grow: 10;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .nav-item {
+            background: $hb-tab-bg-color 0% 0% no-repeat padding-box;
+            border: 0.5px solid $hb-grey-border;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            padding: 0;
+
+            .nav-link {
+              cursor: pointer;
+              padding: 0.375rem 1.25rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ms-transaction-section {
+    padding: 0;
+
+    .ms-transaction-container {
+      background-color: $hb-white;
+      border-radius: 10px;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .ms-dashboard-container {
+    .ms-dashboard-section {
+      padding: 0 2rem 2rem 2rem;
+      .ms-page-heading-container {
+        .ms-page-heading {
+          padding-left: 0;
+        }
+      }
+      .ms-quick-links-container {
+        .ms-navbar {
+          padding: 0.75rem 2rem;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .ms-dashboard-container {
+    .ms-dashboard-section {
+      padding: 0 2.5rem 2rem;
+      .ms-page-heading-container {
+        .ms-page-heading {
+          padding: 0;
+        }
+      }
+    }
+    .ms-transaction-section {
+      padding: 0 2.5rem;
+    }
+  }
+}

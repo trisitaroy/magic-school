@@ -1,0 +1,26 @@
+@import '../../../assets/scss/variables';
+
+.ms-not-found-container {
+    .ms-error-img {
+        width: 80%;
+        max-width: 740px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .ms-not-found-container {
+        .ms-error-img {
+            width: 40%;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .ms-not-found-container {
+        .ms-error-img {
+            overflow: hidden; 
+            width: 65%;
+            height: 600px;
+        }
+    }
+}

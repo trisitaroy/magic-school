@@ -1,0 +1,11 @@
+<div class="col-12 p-0" id="HBBlankLayout">
+  <div class="hb-before-login-header" id="HBBlankLayoutHeader" >
+    <app-header [isBeforeLogin]="true"></app-header>
+  </div>
+  <main id="HBBlankLayoutMainContent" class="hb-child-outlet">
+    <router-outlet #outlet="outlet" (activate)="onActivate(outlet)"></router-outlet>
+  </main>
+  <div class="hb-before-login-footer" id="HBBlankLayoutFooter" >
+    <app-footer></app-footer>
+  </div>
+</div>

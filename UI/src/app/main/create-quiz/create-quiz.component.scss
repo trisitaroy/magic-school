@@ -1,0 +1,86 @@
+@import './../../../assets//scss/variables';
+@import './../../../assets//scss/mixins';
+
+.hb-create-contact-container {
+    @include hb-create-layout-view;
+}
+.hb-create-contact-form {
+    .hb-contact-profile-img-container {
+        background:$hb-white;
+        margin: 0 auto;
+        text-align: center;
+        height: 125px;
+        position: relative;
+        border: 0.5px solid $hb-grey;
+        border-radius: 4px 4px 0px 0px;
+        .hb-contact-profile-img {
+            width: 112px;
+            height: 112px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 0.5px solid $hb-grey;
+            .hb-image-upload {
+                width: 100%;
+                height: 100%;
+                .hb-image{
+                    width: 40px;
+                    height: 40px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+    .hb-image-uploaded {
+        background: $hb-white 0% 0% no-repeat padding-box;
+        height: 48px;
+        border: 0.5px solid $hb-grey-border;
+        border-radius: 0px 0px 8px 8px;
+        cursor: pointer;
+        text-align: center;
+        border-top: none;
+        .hb-replace {
+            cursor: pointer;
+            .profilePhotoInput {
+                display: none;
+            }
+        }
+        .hb-remove {
+            border-left: 0.5px solid $hb-grey-border;
+        }
+    }
+}
+.hb-create-service-provider {
+  .mt-30 {
+    margin-top: 30px;
+  }
+}
+
+.hb-contacts-list-container {
+  margin-bottom: 2rem;
+  @include hb-contact-list-view;
+}
+
+@include media-breakpoint-up(lg) {
+    .hb-create-contact-container {
+        .hb-create-contact-heading-container {
+            padding: 0 2rem;
+        }
+        .hb-page-body {
+            &.hb-fixed-width-container {
+                justify-content: center;
+                > .hb-fixed-width {
+                    max-width: 850px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

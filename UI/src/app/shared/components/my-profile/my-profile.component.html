@@ -1,0 +1,125 @@
+<div class="hb-my-profile-container mt-4 mt-lg-5" id="HBMyProfileComContainer">
+    <div class="row hb-my-profile-header align-content-center justify-content-between">
+        <div class="heading">
+            <h1 class="hb-my-profile-header-text">Attendance Summary</h1>
+         </div>       
+        <div class="weekContainer">
+             <div class="dayDetail" *ngFor ="let day of dayDetail">
+                 <div class="dayHeadr" >{{day.header}}
+                 </div>
+                 <div class="hrsContnr" >
+                      <span class="hrsSpan" style="color: green;" >Total(H) : {{day.totalTime}}</span>
+                      <span class="hrsSpan" style="color: red;" >Idle(H)   : {{day.idle}}</span>
+                      <div class="swipeLoctn in">
+                         <span style="font-weight: bold;color: green;" class="">{{day.login}}</span>
+                         <span style="font-weight: bold;" class="">Log In</span>
+                     </div>
+                     <div class="swipeLoctn out">
+                         <span style="font-weight: bold;color: red;" class="">{{day.logout}}</span>
+                         <span style="font-weight: bold;" class="">Log Out</span>
+                     </div>                        
+                 </div>                                       
+             </div>                        
+         </div>
+         <div class="heading">
+            <h1 class="hb-my-profile-header-text">Quiz Performance</h1>
+        </div>
+             <div class="weekContainer">
+                 <h2 *ngIf="performanceList && performanceList.length===0">No Quiz Taken</h2>
+                <div class="section_content-component" *ngFor="let performance of performanceList">                      
+                    <div class="deliverable_highlight"  [ngClass]="{'deliverable_highlight-green': performance.status=='Passed'}">
+                    </div>
+                    <div class="key-role_content_teacher" *ngIf="userInfo.role =='teacher'">
+                            <h1>     Taken By {{performance.username}} </h1>
+                    </div>
+                    <div class="key-role_content deliverables-role_content">
+                        <div class="key-role_content-desc pull-left addQDnote">
+                            <h4 >{{performance.topiccode | titlecase}} Quiz on {{performance.topicname}}</h4>                          
+                            <p style="margin-top: -10px; overflow-wrap: break-word;" >
+                                Completed the quiz in {{performance.totaltime}} sec with correct ans {{performance.correctQ}} out of {{performance.totalQ}}.
+                                score was {{performance.score}}.
+                                {{performance.comment}}!
+                           </p>                  
+                    </div>
+                    <ul class="key-role_content-notes pull-left addQDnote d-none d-md-block">             
+                        <li class="note">
+                            <a style="cursor:pointer"></a>
+                        </li>
+                        <li></li>
+                        <li  class="last"></li>
+                    </ul>
+                    <div class="deliverable-status pull-left d-none d-md-block">
+                        <p style="font-weight: bold">
+                            Completed on:
+                            <label class="label-date" id="selected-date_perf">{{performance.date}}</label>
+                        </p>      
+                                          
+                    </div>
+                    
+                    <p class="deliverable_status" style="font-weight: bold">
+                        Status:
+                        <label class="label-date sel_status">{{performance.status}}</label>
+                    </p>                  
+                </div>
+                </div>                                       
+             </div>
+         <div  class="heading">
+            <h1 class="hb-my-profile-header-text">Contact Information</h1>
+         </div>        
+         <div class="weekContainer">
+            <form id="" class="col-12 p-0"  [formGroup]="contactInfoFormGroup">
+                <section class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-0 pr-md-3 form-group">
+                            <label for="FirstName" class="hb-form-label">First Name</label>
+                            <input type="text" class="form-control" id="FirstName"
+                                formControlName="firstName"  />
+                                <div *ngIf="!!theBasicsFromGroup_firstName.invalid && (!!theBasicsFromGroup_firstName.dirty || !!theBasicsFromGroup_firstName.touched)" class="hb-field-error-msg">
+                                    <div *ngIf="!!theBasicsFromGroup_firstName.errors.required || !!theBasicsFromGroup_firstName.errors.isOnlywhiteSpace">
+                                      First Name is required
+                                    </div>
+                                  </div>
+                        </div>
+                        <div class="col-12 col-md-6 p-0 pl-md-3 form-group">
+                            <label for="LastName" class="hb-form-label">Last Name</label>
+                            <input type="text" class="form-control" id="LastName"
+                                formControlName="lastName" />
+                                <div *ngIf="!!theBasicsFromGroup_lastName.invalid && (!!theBasicsFromGroup_lastName.dirty || !!theBasicsFromGroup_lastName.touched)" class="hb-field-error-msg">
+                                    <div *ngIf="!!theBasicsFromGroup_lastName.errors.required || !!theBasicsFromGroup_lastName.errors.isOnlywhiteSpace">
+                                      Last Name is required
+                                    </div>
+                                  </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-0 pr-md-3 form-group">
+                            <label for="Email" class="hb-form-label">Email</label>
+                            <input type="email" class="form-control" id="Email" formControlName="email" />
+                        </div>
+                        <div class="col-12 col-md-6 p-0 pl-md-3 form-group">
+                            <label for="Work" class="hb-form-label">Phone</label>
+                            <input type="text" class="form-control" id="Work" formControlName="workPhone" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 p-0 pr-md-3 form-group">
+                            <label for="Role" class="hb-form-label">Role</label>
+                            <input type="role" class="form-control" id="Role" formControlName="role" />
+                        </div>
+                        <div class="col-12 col-md-6 p-0 pl-md-3 form-group" *ngIf="userInfo.role ==='teacher'">
+                            <label for="Subject" class="hb-form-label">Subject</label>
+                            <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="topicList" [inputLabelId]="'HBtopic'"
+                            [value]="subject" [isShowChooseOption]="false"
+                            (selectedValueChange)="selectionChanged($event,'topic')">
+                          </app-dropdown>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            <div class="hb-button-group mr-3">
+                <button mat-button class="hb-primary-btn-type-1" (click)="saveChanges()" [disabled]="myProfileForm.invalid || (!myProfileForm.dirty && subject === userInfo.subject)">
+                    Save
+                </button>
+            </div>
+         </div>        
+</div>

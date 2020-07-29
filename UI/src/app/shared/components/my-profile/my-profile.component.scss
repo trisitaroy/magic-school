@@ -1,0 +1,226 @@
+@import './../../../../assets/scss/variables';
+@import './../../../../assets/scss/mixins';
+
+
+.heading{
+    margin-left: 10%;
+}
+.weekContainer {    
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0px 0px 1px 13px;
+    position: relative;
+    float: left;
+    width: 99.8%;
+    background: lightcyan;
+}
+.dayDetail {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    width: 159px;
+    height: auto;
+}
+.dayHeadr {
+    background-color: aqua;
+    width: 100%;
+    float: left;
+    padding: 5px 0;
+    text-align: center;
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 16px;
+    font-family: Proxima Nova-Regular;
+    font-weight: bold;
+    height: 28px;
+}
+.hrsContnr {
+    background-color: navajowhite;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 5px 0;
+    text-align: center;
+}
+.hrsSpan {
+    margin-bottom: 3px;
+    display: block;
+    font-size: 20px;
+    font-family: Proxima Nova-Semibold;
+    
+}
+.swipeSpan {
+    font-size: 12px;
+    font-family: Proxima Nova-Semibold;
+    color: #545454;
+}
+.swipeIn {
+    padding: 0 10px 0 15px;
+    border-right: 1px solid #d9d9d9;
+}
+.swipeLoctn {
+    float: left;
+    height: 56%;
+    font-size: 11px;
+    font-family: Proxima Nova-Semibold;
+    color: #545454;
+    text-align: center;
+    display: table;
+}
+.swipeLoctn.in {
+    margin-left: 5px;
+    padding: 0 5px 0 15px;
+    border-right: 1px solid #d9d9d9;
+}
+.swipeLoctn.out {
+    padding: 0 0 0 18px;
+    margin-left: 5px;
+}
+.swipeLoctn span {
+    display: block;
+    line-height: 12px;
+    text-align: left;
+}
+
+
+.section_content-component {
+    background-color: #fff;
+    width: 97%;
+    position: relative;
+    margin-bottom: 8px;
+    margin-top: inherit;
+    cursor: pointer;
+}
+.deliverable_highlight {
+    height: 100%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 15px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #de3e3e;
+}
+.deliverable_highlight-green {
+    background: #6db33f!important;
+}
+.deliverables-role_content {
+    background: none;
+    position: relative;
+}
+.key-role_content {
+    width: 100%;
+    padding: 15px 0 20px 5px;
+}
+.key-role_content_teacher{
+    width: 100%;
+    padding: 15px 40px 5px;
+}
+.deliverables-role_content .key-role_content-desc {
+    padding-left: 30px;
+    width: 66%;
+    height: 100px;
+    line-height: 90%;
+}
+.pull-left {
+    float: left;
+}
+.key-role_content-desc {
+    color: #717070;
+    width: 61%;
+    padding: 0 15px 0 15px;
+}
+.addQDnote {
+    cursor: pointer;
+}
+.deliverables-role_content h4 {
+    margin: 5px 0 15px 0;
+}
+.deliverables-role_content h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 17.5px;    
+    line-height: 22px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+.deliverables-role_content .key-role_content-desc p {
+    height: 60px;
+    margin-top: -10px; 
+    overflow-wrap: break-word;
+}
+
+.deliverables-role_content .key-role_content-notes {
+    margin-top: 10px;
+    width: 6.5%;
+    padding-left: 33px;
+    border-left: 2px solid #d41152;
+}
+.key-role_content-notes {
+    list-style-type: none;
+    padding: 0 0 0 12px;
+    width: 11%;
+    margin: 0 0 10px 0;
+    border-left: 1px solid #50b3cf;
+}
+.key-role_content-notes li {
+    color: #3c3c3c;
+    margin-bottom: 8px;
+    line-height: 10px;
+    margin-left: -4px;
+    float: none;
+}
+.key-role_content-notes li.note a {
+    display: block;
+    height: 50px;
+    width: 24px;
+}
+.key-role_content-notes li {
+    color: #3c3c3c;
+    margin-bottom: 8px;
+    line-height: 10px;
+    margin-left: -4px;
+    float: none;
+}
+.key-role_content-notes li.last {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.deliverable-status {
+    width: 19%;
+    margin-top: 28px;
+    font-size: 14px;
+    font-family: "Interstate-light";
+}
+.label-date {
+    margin: 0 8px 0 5px;
+    display: inline-block;
+}
+.label-date {
+    cursor: default!important;
+}
+    
+
+@include media-breakpoint-up(md) {
+    .hb-my-profile-container {
+        .hb-my-profile-header {
+            padding: 0 1.5rem;
+        }
+    }
+}
+@include media-breakpoint-up(lg) {
+    .hb-my-profile-container {
+        .hb-my-profile-header,
+        .hb-my-profile-content {
+            padding: 0 2.5rem;
+        }
+    }
+}

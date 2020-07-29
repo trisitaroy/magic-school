@@ -1,0 +1,76 @@
+@import './../../../../assets/scss/variables';
+
+.hb-footer {
+    padding: 2rem 1rem;
+    background-color: $hb-white;
+    box-shadow: -10px 0px 0px 0px $hb-white, 10px 0px 0px 0px $hb-white, 0px 5px 0px $hb-white, 0px -2px 8px $hb-box-shadow-color;
+    .hb-logo-and-copyright {
+        font-size: 0.875rem;
+        .hb-logo-container {
+            width: 100%;
+            .hb-homebase-logo {
+                width: 150px;
+            }
+        }
+        .hb-copyright {
+            .hb-copyright-text {
+                font-family: Roboto Medium;
+            }
+            .hb-copyright-format {
+                font-size: 0.75rem;
+            }
+        }
+    }
+    .hb-privacy-and-contact {
+        font-family: Roboto Medium;
+        width: 100%;
+        a {
+            cursor: pointer;
+        }
+        .hb-privacy {
+            margin-right: 2.5rem;
+        }
+        .hb-contact-us {
+            display: inherit;
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .hb-footer {
+        padding: 1.5rem;
+        align-items: flex-end;
+        .hb-privacy-and-contact {
+            width: auto;
+            text-align: right;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .hb-footer {
+        padding: 2.5rem;
+        .hb-logo-and-copyright {
+            .hb-logo-container {
+                width: auto;
+            }
+        }
+        .hb-privacy-and-contact {
+            .hb-privacy, .hb-usage-terms {
+                margin-right: 1rem;
+            }
+            .hb-contact-us {
+                display: inline;
+            }
+        }
+    }
+}
+
+::ng-deep .hb-new-size-overlay {
+    .hb-overlay-container {
+        .hb-overlay-content-container{
+            height: 100%!important;
+            border-radius: 0px!important;
+        }
+    }
+}

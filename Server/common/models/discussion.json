@@ -1,0 +1,47 @@
+{
+  "name": "discussion",
+  "plural": "discussions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "askedBy": {
+      "type": "string",
+      "required": true
+    },
+    "askedByUsername": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "totalAns": {
+      "type": "number"
+    },
+    "totalLikes": {
+      "type": "number"
+    },
+    "Date": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

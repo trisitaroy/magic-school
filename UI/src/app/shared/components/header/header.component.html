@@ -1,0 +1,213 @@
+<div class="col-12 hb-header" id="HBHeader" style="background-image:url('assets/images/school.jpg')">
+    <!-- Header Logo and Hamburger Menu Start -->
+    <div class="row justify-content-between align-items-lg-center pb-lg-3">
+        <div class="hb-menu-container d-block d-lg-none" *ngIf="!isBeforeLogin">
+            <img src="assets/images/icons/Hamburger_Menu.svg" style="background-color: white;" id="HBHeaderHamburgerIconMobile" alt="Hamburger Menu"
+                class="hb-icon" (click)="toggleMobileNavbar()">
+        </div>
+    </div>
+    <!-- Header Logo and Hamburger Menu End -->
+    <!-- Header Navbar Start -->
+    <div class="col-12 p-0 hb-nav-container" *ngIf="!isBeforeLogin" id="HBHeaderNavContainer">
+        <nav class="p-0 navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse justify-content-between align-items-start" id="HBHeaderNav">
+                <div class="hb-nav-item-container pr-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item" routerLinkActive="active" (click)="navigateToPage('home')">
+                            <a class="nav-link" title="Transactions" id="MSHeaderNaviLinkDiscussion" style="color: white;">Discussion</a>
+                        </li>  
+                        <li class="nav-item" *ngIf="userInfo.role =='student'"  (click)="navigateToPage('topics')">
+                            <a class="nav-link" title="Contacts" id="MSHeaderNaviLinkQuiz" style="color: white;"> Quiz</a>
+                        </li> 
+                        <li class="nav-item" *ngIf="userInfo.role =='teacher'"  (click)="navigateToPage('createquiz')">
+                            <a class="nav-link" title="Contacts" id="MSHeaderNaviLinkQuiz" style="color: white;">Create Quiz</a>
+                        </li>
+                        <li class="nav-item" (click)="navigateToPage('documents')">
+                            <a class="nav-link" title="Documents" id="MSHeaderNaviLinkDocuments" style="color: white;">Files</a>
+                        </li>
+                        <li class="nav-item"  (click)="navigateToPage('inbox')">
+                            <a class="nav-link" title="Contacts" id="MSHeaderNaviLinkQuiz" style="color: white;">Inbox</a>
+                        </li>
+                        <li class="nav-item"  (click)="navigateToPage('schoolbot')">
+                            <a class="nav-link" title="Contacts" id="MSHeaderNaviLinkQuiz" style="color: white;">Bot Help</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row p-0">
+                    <div class="hb-logged-user-info" id="HBHeaderLoggedInUserInfo">
+                        <div class="hb-dropdown" id="HbHeaderUserInfoDropdown">
+                            <img style="border-radius: 50%; margin-bottom: 10px;margin-right: 10px;cursor: pointer;"  class="hb-user-short-name" width="40" height="35" src="assets/images/icons/bell.gif" alt="Notification" (click)="toggleMyFeed()">                                            
+                            
+                            <div class="hb-dropdown-menu" *ngIf="isShowMyFeed "
+                                [@slideInOutAnimation]="{value: isShowUserDropdown ? ':enter': ':leave'}"
+                                id="HBHeaderDropdownMenu">
+                                <app-my-feed-overlay  [fromHeader]="true" (_closeOverlay)="changeOverlay($event)"></app-my-feed-overlay>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hb-logged-user-info" id="HBHeaderLoggedInUserInfo">
+                        <div class="hb-dropdown" id="HbHeaderUserInfoDropdown">
+                            <button mat-button disableRipple class="hb-dropdown-button p-0"
+                                id="HbHeaderUserInfoDropdownBtn" (click)="toggleUserDropDown()">
+                                <span class="hb-user-short-name" [ngClass]="{'expanded' : isShowUserDropdown}"
+                                    id="HbHeaderUserShortName">{{shortName}}</span>
+                            </button>
+                            <div class="hb-dropdown-menu" *ngIf="isShowUserDropdown"
+                                [@slideInOutAnimation]="{value: isShowUserDropdown ? ':enter': ':leave'}"
+                                id="HBHeaderDropdownMenu">
+                                <div class="col-12 p-0 text-right">
+                                    <img src="assets/images/icons/Cross - Smallest.svg" alt="Close Icon"
+                                        id="HBHeaderDropdownMenuCloseIcon" class="hb-icon"
+                                        (click)="toggleUserDropDown()" />
+                                </div>
+                                <div class="row flex-nowrap hb-user align-items-center">
+                                    <div class="p-0">
+                                        <div class="hb-user-image-container">
+                                            <span class="hb-user-image-name"
+                                                id="HBHeaderDropdownMenuUserImageTxt">{{shortName}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="pl-4 pr-4 hb-user-details-container">
+                                        <p class="m-0 hb-user-name" id="HBHeaderDropdownMenuUserFullName">
+                                           {{userInfo.userName}}
+                                        </p>
+                                        <p class="m-0 hb-user-type" id="HBHeaderDropdownMenuUserType" (click)="editRole()">
+                                            {{userInfo.role}}                                            
+                                        </p>
+                                        <div class="mt-1 hb-user-location">
+                                            <label for="HBHeaderDropdownMenuUserLocation" class="m-0 hb-form-label"
+                                                id="HBHeaderDropdownMenuUserLocationLabel">
+                                                Email </label>
+                                            <p class="m-0 hb-field-content" id="HBHeaderDropdownMenuUserLocation">
+                                                {{userInfo.email}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 p-0 pt-3 mt-3 row justify-content-between hb-logout-section">
+                                    <a class="hb-link hb-logout" id="HBHeaderLogoutLink" (click)="logout()">Logout</a>
+                                    <a class="hb-positive-link" id="HBHeaderUserFullProfile"
+                                        (click)="navigateMyProfile()">Full Profile<img
+                                            src="assets/images/icons/Right_Arrow_Blue.svg" alt="Right Arrow Icon"
+                                            id="HBHeaderUserFullProfileIcon" class="ml-1 hb-icon" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Header Navbar End -->
+</div>
+
+<!-- Mobile Navbar Start -->
+<div class="col-12 p-0 d-lg-none hb-nav-mobile" *ngIf="isMobileNavOpen"
+    [@showHideAnimation]="{value: isMobileNavOpen ? ':enter' : ':leave', params: { transform: 'translateX(-100%)'}}">
+    <div class="h-100 hb-mobile-nav-backdrop" (click)="toggleMobileNavbar()"></div>
+    <div class="hb-mobile-nav-container">
+        <div class="hb-mobile-nav-content">
+            <div class="row flex-nowrap p-3 hb-user align-items-start">
+                <div class="hb-close-icon-container">
+                    <img src="assets/images/icons/Big X.svg" alt="Close Hamburger" id="HBHeaderMobileCloseIcon"
+                        class="hb-icon" (click)="toggleMobileNavbar()" />
+                </div>
+                <div class="col p-0 mx-3">
+                    <div class="row flex-nowrap">
+                        <div class="mr-4 text-center">
+                            <div class="mr-auto ml-auto hb-user-image-container mb-2">
+                                <span class="hb-user-image-name" id="HBHeaderDropdownMenuUserImageTxt">{{shortName}}</span>
+                            </div>
+                        </div>
+                        <div class="hb-user-details-container">
+                            <p class="m-0 hb-user-name" id="HBHeaderMobileUsername">
+                                {{this.userInfo.userName}}
+                            </p>
+                            <p class="m-0 hb-user-type" id="HBHeaderMobileUserType">
+                                {{this.userInfo.role}}
+                            </p>
+                            <div class="mt-1 hb-user-location">
+                                <label for="HBHeaderMobileUserLocation" class="m-0 hb-form-label"
+                                    id="HBHeaderMobileUserLocationLabel"> Email </label>
+                                <p class="m-0 hb-field-content" id="HBHeaderMobileUserLocation"> {{userInfo.email}}
+                                    <img src="assets/images/icons/Edit_Icon.svg" alt="Edit Agent Office Details"
+                                        id="HBHeaderMobileViewAgentOfficeIcon" class="hb-icon" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4 mt-3 hb-horizontal-separator" />
+                    <div class="text-right hb-full-profile-link-container">
+                        <a class="hb-positive-link" id="HBHeaderMobileUserFullProfile"
+                            (click)="navigateMyProfile()">Full Profile<img
+                                src="assets/images/icons/Right_Arrow_Blue.svg" alt="Right Arrow Icon"
+                                id="HBHeaderUserFullProfileIcon" class="ml-1 hb-icon" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="p-0 navbar">
+                <div class="w-100" id="HBHeaderMobileNav">
+                    <div class="hb-nav-item-container pr-0">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" routerLinkActive="active" (click)="navigateToPage('home')">
+                                <a class="nav-link" title="Transactions" id="HBHeaderMobileTransactionsLink">
+                                    <span>                                       
+                                        Discussion
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item" (click)="navigateToPage('topics')">
+                                <a class="nav-link" title="Feed" id="HBHeaderMobileFeedLink">
+                                    <span>                                       
+                                        Quiz
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item" (click)="navigateToPage('documents')">
+                                <a class="nav-link" title="Feed" id="HBHeaderMobileFeedLink">
+                                    <span>                                       
+                                        Files
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item" (click)="navigateToPage('inbox')">
+                                <a class="nav-link" title="Feed" id="HBHeaderMobileFeedLink">
+                                    <span>                                       
+                                        Inbox
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item" routerLinkActive="active" (click)="navigateToPage('noty')">
+                                <a class="nav-link" title="Transactions" id="HBHeaderMobileTransactionsLink">
+                                    <span>                                       
+                                        My Notification
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item" (click)="navigateToPage('schoolbot')">
+                                <a class="nav-link" title="Documents" id="HBHeaderMobileDocumentsLink">
+                                    <span>
+                                      Bot Help
+                                    </span>
+                                </a>
+                            </li>                            
+                            <li class="nav-item" (click)="logout();">
+                                <a class="nav-link" title="Logout" id="HBHeaderMobileLogoutLink">
+                                    <span>
+                                       
+                                        Logout
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Mobile Navbar End -->

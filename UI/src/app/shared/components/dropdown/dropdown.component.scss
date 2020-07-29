@@ -1,0 +1,10 @@
+.hb-select-dropdown {
+    cursor: pointer;
+    .hb-icon {
+        transform: rotate(0deg);
+        transition: transform 250ms linear;
+        &.rotate {
+            transform: rotate(180deg);
+        }
+    }
+}

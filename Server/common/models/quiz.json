@@ -1,0 +1,36 @@
+{
+  "name": "quiz",
+  "plural": "quizes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "topiccode": {
+      "type": "string",
+      "required": true
+    },
+    "topicname": {
+      "type": "string",
+      "required": true
+    },
+    "totalQ": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "questions": {
+      "type": "hasMany",
+      "model": "question",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

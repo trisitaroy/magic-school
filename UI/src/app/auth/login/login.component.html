@@ -1,0 +1,130 @@
+<!-- Login Content Start -->
+<div class="col-12 row align-items-center ms-login-container" id="HBLogin">
+  <section
+    class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ms-login-box"
+    id="HBLoginBoxSection">
+    <h1 style="font-weight: bold;" class="mb-4" id="HBLoginHeading">{{haveAcc ? "Login" : "Register"}}</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="col-12 p-0 ms-login-form" id="HBLoginForm">
+      <div class="form-group" *ngIf="!haveAcc">
+        <div class="row">
+          <div class="col-6">
+            <label for="HBLoginMobile" class="ms-form-label" id="HBLoginMobileLabel">Role
+            </label>
+            <app-dropdown style="height:100px;" [dropdownData]="contactTypeList" [inputLabelId]="'HBcontactType'"
+                [value]="role" [isShowChooseOption]="false"
+                (selectedValueChange)="selectionChanged($event, 'role')">
+              </app-dropdown>
+          </div>
+          <div class="col-6" *ngIf="isTeacher">
+            <label for="HBLoginMobile" class="ms-form-label" id="HBLoginMobileLabel">Choose Subject
+            </label>
+            <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="topicList" [inputLabelId]="'HBtopic'"
+              value="geo" [isShowChooseOption]="false"
+              (selectedValueChange)="selectionChanged($event,'topic')">
+            </app-dropdown>
+          </div>
+        </div>       
+      </div>
+      <div class="form-group" *ngIf="!haveAcc">
+        <div class="row">
+          <div class="col-6">
+            <label for="HBLoginEmail" class="ms-form-label" id="HBLoginEmailLabel"
+            [ngClass]="{'ms-field-error': !!f.email.invalid && (!!f.email.dirty || !!f.email.touched)}">Email
+            </label>
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="HBLoginEmail" formControlName="email" class="form-control"
+            [ngClass]="{'ms-field-error': !!f.email.invalid && (!!f.email.dirty || !!f.email.touched)}" />
+          <div *ngIf="!!f.email.invalid && (!!f.email.dirty || !!f.email.touched)" class="hb-field-error-msg">
+            <div *ngIf="!!f.email.errors.required || !!f.email.errors.isOnlywhiteSpace">
+              Email is required
+            </div>
+            <div *ngIf="!!f.email.invalid">
+              Not a valid Email
+            </div>
+          </div>
+          </div>
+          <div class="col-6">
+            <label for="HBLoginMobile" class="ms-form-label" id="HBLoginMobileLabel">Mobile
+            </label>
+          <input type="phone" maxlength="10" id="HBLoginMobile" formControlName="mobile" class="form-control"/>         
+          </div>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="!haveAcc">
+        <div class="row">
+          <div class="col-6">
+            <label for="HBLoginfName" class="ms-form-label" id="HBLoginfNameLabel"
+          [ngClass]="{'ms-field-error': !!f.fName.invalid && (!!f.fName.dirty || !!f.fName.touched)}">First Name
+          </label>
+        <input type="text" id="HBLoginfName" formControlName="fName" class="form-control"
+          [ngClass]="{'ms-field-error': !!f.fName.invalid && (!!f.fName.dirty || !!f.fName.touched)}" />
+        <div *ngIf="!!f.fName.invalid && (!!f.fName.dirty || !!f.fName.touched)" class="hb-field-error-msg">
+          <div *ngIf="!!f.fName.errors.required || !!f.fName.errors.isOnlywhiteSpace">
+            First Name is required
+          </div>
+        </div>
+          </div>
+          <div class="col-6">
+            <label for="HBLoginlName" class="ms-form-label" id="HBLoginlNameLabel"
+          [ngClass]="{'ms-field-error': !!f.lName.invalid && (!!f.lName.dirty || !!f.lName.touched)}">Last Name
+          </label>
+        <input type="text" id="HBLoginlName" formControlName="lName" class="form-control"
+          [ngClass]="{'ms-field-error': !!f.lName.invalid && (!!f.lName.dirty || !!f.lName.touched)}" />
+        <div *ngIf="!!f.lName.invalid && (!!f.lName.dirty || !!f.lName.touched)" class="hb-field-error-msg">
+          <div *ngIf="!!f.lName.errors.required || !!f.lName.errors.isOnlywhiteSpace">
+            Last Name is required
+          </div>
+        </div>
+          </div>
+        </div>        
+      </div>
+      <div class="form-group">
+        <label for="HBLoginUsername" class="ms-form-label" id="HBLoginUsernameLabel"
+          [ngClass]="{'ms-field-error': !!f.username.invalid && (!!f.username.dirty || !!f.username.touched)}">User Name
+          </label>
+        <input type="text" id="HBLoginUsername" formControlName="username" class="form-control"
+          [ngClass]="{'ms-field-error': !!f.username.invalid && (!!f.username.dirty || !!f.username.touched)}" />
+        <div *ngIf="!!f.username.invalid && (!!f.username.dirty || !!f.username.touched)" class="hb-field-error-msg">
+          <div *ngIf="!!f.username.errors.required || !!f.username.errors.isOnlywhiteSpace">
+            Username is required
+          </div>
+          <div *ngIf="submitted && !!f.password.errors">
+            Not a valid username
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="HBLoginPassword" class="ms-form-label" id="HBLoginPasswordLabel"
+          [ngClass]="{'ms-field-error': !!f.password.invalid && (!!f.password.dirty || !!f.password.touched)}">Password</label>
+        <input type="password" id="HBLoginPassword" formControlName="password" class="form-control"
+          [ngClass]="{'ms-field-error': !!f.password.invalid && (!!f.password.dirty || !!f.password.touched)}" />
+        <div *ngIf="!!f.password.invalid && (!!f.password.dirty || !!f.password.touched)" class="hb-field-error-msg">
+          <div *ngIf="!!f.password.errors.required || !!f.password.errors.isOnlywhiteSpace">
+            Password is required
+          </div>
+          <div *ngIf="submitted && !!f.password.errors">
+            Password Incorrect
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-between align-items-center pt-2">
+        <div class="col-10 col-md-8 p-0 mt-3">
+          <a class="m-0 ms-alert-text" style="text-decoration: underline;cursor: pointer;"  (click)="haveAccount()" id="HBLoginAlertMsg">
+            {{haveAcc?"Don't have an account?":"Already have an account?"}} </a>
+        </div>
+        <div class="hb-button-group">
+          <button mat-button class="hb-primary-btn-type-1" [disabled]="!haveAcc?loginForm.invalid: (f.username.invalid || f.password.invalid)" id="HBLoginButton">
+            {{haveAcc ? "Login" : "Register"}}
+            <img
+              [src]="loginForm.invalid ? 'assets/images/icons/Right_Arrow_Grey.svg' : 'assets/images/icons/Right_Arrow_White.svg'"
+              alt="Right Arrow Icon" id="HBLoginButtonRightArrowIcon" class="ml-1 ms-icon" />
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+<!-- Login Content End -->
+
+<!-- Loader Content Start -->
+<app-loader [isShowLoader]="loading"></app-loader>
+<!-- Loader Content End -->

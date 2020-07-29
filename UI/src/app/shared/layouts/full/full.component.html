@@ -1,0 +1,19 @@
+<div class="row" id="MSFullLayout">
+  <section class="ms-full-layout-section-1 ms-full-width ms-closed-sidenav" id="MSFullLayoutSection1" [@routeAnimations]="outletData(outlet)">
+    <div class="ms-header-container" id="MSFullLayoutHeader" *ngIf="isShowHeaderFooter">
+      <header>
+        <app-header [isBeforeLogin]="false"></app-header>
+      </header>
+    </div>
+    <div class="ms-main-content-container" id="MSFullLayoutMainContent">
+      <main class="ms-child-outlet">
+        <router-outlet #outlet="outlet" (activate)="onActivate(outlet)"></router-outlet>
+      </main>
+    </div>
+    <div class="ms-footer-container" id="MSFullLayoutFooter" *ngIf="isShowHeaderFooter">
+      <footer>
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </section>  
+</div>

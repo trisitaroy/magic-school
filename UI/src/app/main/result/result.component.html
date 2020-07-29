@@ -1,0 +1,130 @@
+<ng-template #resultTemplate >
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <div class="mat-card-container">
+        <mat-card-title>{{topicname | titlecase}} Quiz</mat-card-title>
+        <mat-card-subtitle><h2>Results</h2></mat-card-subtitle>
+      </div>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <section class="results">
+        <section class="statistics">
+          <h3>Statistics</h3>
+          <span>You scored {{ correctAnswersCount }} out of {{ totalQuestions }} questions correctly.</span>
+          <span>You completed the quiz in {{ elapsedSeconds }} seconds.</span>
+  
+          <div class="quiz-feedback">
+            <div *ngIf="percentage >= 80">
+              <img mat-card-image [src]="CONGRATULATIONS" alt="Photo of Congratulations">
+              <h3>Great job! </h3>
+            </div>
+            <div *ngIf="percentage >= 60 && percentage < 80">
+              <img mat-card-image [src]="NOT_BAD" alt="Photo of Not Bad">
+              <h3>Not bad! </h3>
+            </div>
+            <div *ngIf="percentage < 60">
+              <img mat-card-image [src]="TRY_AGAIN" alt="Photo of Try Again">
+              <h3>Try again! </h3>
+            </div>
+  
+            <span *ngIf="elapsedSeconds < 30">You scored {{ percentage }}% correctly (and quickly)!</span>
+            <span *ngIf="elapsedMinutes > 30">You scored {{ percentage }}% correct.</span>
+          </div>
+        </section>
+  
+        <section class="quizSummary">
+          <details>
+            <summary>View a more detailed summary of your quiz</summary>
+            <accordion>
+              <accordion-group #quizQuestion role="tab" *ngFor="let question of allQuestions">
+                <span accordion-heading class="accordion-heading">
+                  <span>
+                    <strong>Question #{{ question.id }}: </strong>  <em>{{ question.questionText }}</em>
+                  </span>
+                  <span class="badge badge-secondary float-right pull-right">
+                    <i class="fa" [ngClass]="{'fa-chevron-up': quizQuestion.isOpen, 'fa-chevron-down': !quizQuestion.isOpen}"></i>
+                  </span>
+                </span>
+  
+                <div class="quiz-summary-question">
+                  <div class="quiz-summary-field">
+                    <span>
+                      <span class="leader">Question #{{ question.id }}: </span>{{ question.questionText }}
+                    </span>
+                  </div>
+                  <div class="quiz-summary-field">
+                    <span>
+                      <span class="leader">Your Answer: </span>
+                      Option {{ question.selectedOption }} &mdash; 
+                      <mat-icon class="correct" *ngIf="question.answer === question.selectedOption">done</mat-icon>
+                      <mat-icon class="incorrect" *ngIf="question.answer !== question.selectedOption">clear</mat-icon>
+                      <span *ngIf="question.selectedOption === ''"> (no answer provided)</span>
+                    </span>
+                  </div>
+                  <div class="quiz-summary-field">
+                    <span>
+                      <span class="leader">Correct Answer: </span>
+                      Option {{ question.answer }} &mdash; 
+                    </span>
+                  </div>
+                  <div class="quiz-summary-field">
+                    <span>
+                      <span class="leader">Explanation: </span>
+                      Option {{ question.answer }} was correct.
+                    </span>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+          </details>
+        </section>
+      </section>
+  
+      <section class="return">
+        <mat-card-actions>
+          <a routerLink="/topics" class="btn">Retake Quiz</a>
+        </mat-card-actions>
+      </section>
+  
+      <hr />
+  
+      <section class="challenge-social">
+        <h4>Challenge your friends!</h4>
+        <div class="social-buttons">
+          <a class="btn email"
+             href="mailto:?subject=Try to beat my quiz score!&amp;body=I scored {{ percentage }}% on this awesome quiz. Try to beat my score at {{ quizUrl }}">Email a friend</a>
+          </div>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
+
+<div class="hb-create-contact-container" >
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreateDiscussion">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreateDiscussionHeading">
+       Your Score Card
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreateDiscussionModalCloseBtn" (click)="navigateToBack()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreateDiscussionModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreateDiscussionBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="resultTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+     
+    </footer>
+  </div>
+</div>

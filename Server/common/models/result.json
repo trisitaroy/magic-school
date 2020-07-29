@@ -1,0 +1,72 @@
+{
+  "name": "result",
+  "plural": "results",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "createdby": {
+      "type": "string",
+      "required": true
+    },
+    "topiccode": {
+      "type": "string",
+      "required": true
+    },
+    "topicname": {
+      "type": "string",
+      "required": true
+    },
+    "totalQ": {
+      "type": "number",
+      "required": true
+    },
+    "correctQ": {
+      "type": "number",
+      "required": true
+    },
+    "score": {
+      "type": "string",
+      "required": true
+    },
+    "totaltime": {
+      "type": "string",
+      "required": true
+    },
+    "passingscore": {
+      "type": "string",
+      "required": true
+    },
+    "comment": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "questions": {
+      "type": "hasMany",
+      "model": "question",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

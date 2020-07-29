@@ -1,0 +1,330 @@
+<div class="col-12 p-0 row hb-documents-container mt-4 mt-lg-5" id="HBDocuments" >
+    <section class="col-12 hb-doc-heading-section">
+        <!-- Documents Page header Start -->
+        <div class="hb-page-heading-container" id="HBDocumentsHeadingContainer">
+            <h1 class="m-0 hb-page-heading" id="HBDocumentstsHeading">
+                Files 
+            </h1>
+        </div>
+        <!-- Documents Page header End -->
+    </section>
+    <section class="col-12 hb-documents-tab-section" >
+        <div class="hb-tabs-container" id="HBDocumentsTabsContainer">
+            <mat-tab-group class="hb-tab-group" id="HBDocumentsTabGroup" #tabGroup [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+                <!-- Document Inbox Tab Start -->
+                <mat-tab id="HBDocumentsDocInboxTab">
+                    <ng-template mat-tab-label>
+                        <img src="assets/images/icons/Folder_Group.svg" alt="Documents Icon"
+                            id="HBDocumentsDocInboxTabImage" class="mr-2 hb-icon" />
+                        <span id="HBDocumentsDocInboxTabHeader">Add Text File to Listen</span>
+                    </ng-template>
+                    <div class="hb-tab-content" style="background-color:aqua">
+                        <div class="row justify-content-between align-items-center mb-4">
+                            <div class="hb-button-group">
+                                <button type="button"  (click)="openModal(createtemplate)" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                                     id="HBDocumentsReadyToReviewTabReviewsBtn">
+                                     Create New File
+                                </button>
+                                <button type="button" (click)="openModal(uploadtemplate)" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                                 id="HBDocumentsReadyToReviewTabReviewsBtn">
+                                      Upload File
+                                </button>
+                            </div>                            
+                        </div>
+                        <div class="hb-doc-inbox-list-container">
+                            <div class="row align-items-center p-3 hb-doc-inbox-list"
+                                *ngFor="let document of listFiles;let i=index">
+                                <div class="col-12 p-0 row align-items-center hb-doc-list">
+                                    <div class="row align-items-center hb-list-info-container">
+                                        <div class="hb-document-name-container">
+                                            <a class="hb-doc-name hb-roboto-bold" (click)="openFile(document)"
+                                             style="cursor: pointer;" 
+                                                [id]="'HBDocumentsDocInbox'+i+'Name'">{{document?.name}}</a>
+                                            <p class="m-0" [id]="'HBDocumentsDocInbox'+i+'UploadDate'">
+                                                {{document?.uploadedDate}} By <span
+                                                    class="hb-roboto-medium hb-doc-uploader-name"
+                                                    [id]="'HBDocumentsDocInbox'+i+'UploadedFromAndBy'">{{document?.uploadedBy}}</span>
+                                            </p>
+                                        </div>    
+                                        <div class="hb-document-name-container">
+                                            <a class="hb-doc-type hb-roboto-bold"
+                                               [id]="'HBDocumentsDocInbox'+i+'Name'">Type</a>
+                                            <p class="m-0" [id]="'HBDocumentsDocInbox'+i+'UploadDate'">
+                                                {{document?.type}}<span
+                                                    class="hb-roboto-medium hb-doc-uploader-name"
+                                                    [id]="'HBDocumentsDocInbox'+i+'UploadedFromAndBy'"></span>
+                                            </p>
+                                        </div>                                    
+                                    </div>
+                                    <div class="hb-flag-and-menu-container" dir="rtl">
+                                        
+                                        <img src="assets/images/icons/Trash.svg" alt="Hold Icon" (click)="deleteFile(document)"
+                                        [ngClass]="{'hb-disabled': document?.uploadedBy !== userInfo.userName}"
+                                        class="hb-icon hb-hold-icon"  width="50" height="50" [id]="'HBDocumentsDocInbox'+i+'HoldIcon'">
+                                        
+                                        <img src="assets/images/icons/download.svg" alt=""
+                                        class="hb-icon hb-hold-icon"  (click)="openFile(document)" width="50" height="50"> 
+                                        
+                                        <img [src]="document?.showNotes ? 'assets/images/icons/Comments_Active.svg' : 'assets/images/icons/Comments.svg'"
+                                        alt="Comments" [id]="'HBDocumentsDocInbox'+i+'NotesIcon'"  width="50" height="50"
+                                        class="hb-icon"
+                                        [ngClass]="{'hb-disabled': document?.noOfNotes == 0}"
+                                        (click)="toggleNoteOrMessage(document, 'note')">                                        
+
+                                        <img src= "assets/images/icons/speaker.png" width="50" height="50"
+                                        alt="Comments" [id]="'HBDocumentsDocInbox'+i+'NotesIcon'"
+                                        class="hb-icon"
+                                        [ngClass]="{'hb-disabled': document?.disableAudio}"
+                                        (click)="toggleNoteOrMessage(document, 'audio')">   
+                                        
+                                        <img src= "assets/images/icons/translate.png" width="55" height="55"
+                                        alt="Comments" [id]="'HBDocumentsDocInbox'+i+'NotesIcon'"
+                                        class="hb-icon"
+                                        [ngClass]="{'hb-disabled': document?.disableAudio}"
+                                        (click)="toggleNoteOrMessage(document, 'translate')">
+                                    </div>
+                                </div>
+                                <div *ngIf="document?.showNotes || document?.showAudio"
+                                    [@slideInOutAnimation]="{value: document?.showNotes || document?.showAudio ? ':enter': ':leave'}"
+                                    [id]="'HBDocumentsDocInbox'+i+'NotesMessageContainer'" class="col-12 p-0">
+                                  
+                                    <div class="hb-comments-container" [id]="'HBDocumentsDocInbox'+i+'NotesContainer'"
+                                        *ngIf="document?.showAudio">
+                                        <div
+                                            class="row align-items-center justify-content-between hb-comments-heading-container">
+                                            <h4 class="m-0 hb-comments-heading"
+                                                [id]="'HBDocumentsDocInbox'+i+'CommentHeadeing'">
+                                                Listen</h4>
+                                            <button mat-button class="p-0 hb-close"
+                                                [id]="'HBDocumentsDocInbox'+i+'CommentCloseBtn'"
+                                                (click)="toggleNoteOrMessage(document, 'audio')">
+                                                Close
+                                                <img src="assets/images/icons/Cross - Smallest.svg" alt="Close Icon"
+                                                    [id]="'HBDocumentsDocInbox'+i+'CommentCloseIcon'"
+                                                    class="ml-2 hb-icon" />
+                                            </button>
+                                        </div>
+                                        <div class="col-12 p-0 hb-comments-content-container">
+                                            <audio autoplay="" id="audio" class="audio " style="width: 100%" controls=""
+                                             type="audio/ogg;codecs=opus"
+                                              [src]= document.audio>
+                                            </audio>                                 
+                                        </div>                                              
+                                    </div>
+                                </div>
+                                <div *ngIf="document?.showNotes || document?.showTranslation"
+                                    [@slideInOutAnimation]="{value: document?.showNotes || document?.showTranslation ? ':enter': ':leave'}"
+                                    [id]="'HBDocumentsDocInbox'+i+'NotesMessageContainer'" class="col-12 p-0">
+                                    <div class="hb-comments-container" [id]="'HBDocumentsDocInbox'+i+'NotesContainer'"
+                                        *ngIf="document?.showNotes">
+                                        <div
+                                            class="row align-items-center justify-content-between hb-comments-heading-container">
+                                            <h4 class="m-0 hb-comments-heading"
+                                                [id]="'HBDocumentsDocInbox'+i+'CommentHeadeing'">
+                                                Comment</h4>
+                                            <button mat-button class="p-0 hb-close"
+                                                [id]="'HBDocumentsDocInbox'+i+'CommentCloseBtn'"
+                                                (click)="toggleNoteOrMessage(document)">
+                                                Close
+                                                <img src="assets/images/icons/Cross - Smallest.svg" alt="Close Icon"
+                                                    [id]="'HBDocumentsDocInbox'+i+'CommentCloseIcon'"
+                                                    class="ml-2 hb-icon" />
+                                            </button>
+                                        </div>
+                                        <div class="col-12 p-0 hb-comments-content-container" >
+                                            <div class="col-12 row hb-comment" style="background-color: lightgrey;"
+                                                *ngFor="let comment of document?.comments; let k=index"
+                                                [id]="'HBDocumentsDocInbox'+i+'Comment'">
+                                                <div class="hb-commented-agent-container">
+                                                    <button mat-button class="hb-agent"
+                                                        [id]="'HBDocumentsDocInbox'+i+'CommentBy'+k">
+                                                        {{comment.owner}}
+                                                    </button>
+                                                </div>
+                                                <div class="hb-comment-content">
+                                                    <p class="col-12 p-0 hb-comment-paragraph"
+                                                        [id]="'HBDocumentsDocInbox'+i+'CommentTxt'+k">
+                                                        {{comment.text}}
+                                                    </p>
+                                                    <p class="col-12 p-0 m-0 hb-comment-time-and-commentee">
+                                                        <span
+                                                            [id]="'HBDocumentsDocInbox'+i+'CommentDate'+k">{{comment.Date}}
+                                                            -
+                                                        </span><span class="hb-roboto-medium hb-comment-made-by"
+                                                            [id]="'HBDocumentsDocInbox'+i+'CommentByFullName'+k">{{comment.ownerFullName}}({{comment.role}})</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <section class="mt-4 hb-add-notes-section" *ngIf="!document?.showAddNoteBtn">
+                                            <form [formGroup]="noteForm">
+                                                <div class="col-12 p-0 form-group">
+                                                    <textarea class="mt-2 form-control" rows="5"
+                                                        placeholder="Add comments here." formControlName="note"
+                                                        [id]="'Note'+i" maxlength="200"></textarea>
+                                                </div>
+                                            </form>
+                                        </section>
+                                        <div class="mt-3 hb-button-group">
+                                            <button  type="button" mat-button class="ml-auto hb-primary-btn-type-1"
+                                                (click)="addNote(document)" *ngIf="document?.showAddNoteBtn">
+                                                Add Note
+                                            </button>
+                                            <button  type="button" mat-button class="hb-secondary-btn"
+                                                (click)="cancelAddingNote(document)" *ngIf="!document?.showAddNoteBtn">
+                                                Cancel
+                                            </button>
+                                            <button type="button" mat-button class="hb-primary-btn-type-1"
+                                                (click)="savecomment(document)" *ngIf="!document?.showAddNoteBtn"
+                                                [disabled]="!noteForm.valid">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="hb-comments-container" [id]="'HBDocumentsDocInbox'+i+'NotesContainer'"
+                                    *ngIf="document?.showTranslation">
+                                    <div
+                                        class="row align-items-center justify-content-between hb-comments-heading-container">
+                                        <h4 class="m-0 hb-comments-heading"
+                                            [id]="'HBDocumentsDocInbox'+i+'CommentHeadeing'">
+                                            Translate</h4>
+                                        <button mat-button class="p-0 hb-close"
+                                            [id]="'HBDocumentsDocInbox'+i+'CommentCloseBtn'"
+                                            (click)="toggleNoteOrMessage(document,'translate')">
+                                            Close
+                                            <img src="assets/images/icons/Cross - Smallest.svg" alt="Close Icon"
+                                                [id]="'HBDocumentsDocInbox'+i+'CommentCloseIcon'"
+                                                class="ml-2 hb-icon" />
+                                        </button>
+                                    </div>
+                                    <section class="mt-4 hb-add-notes-section">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label class="hb-form-label">Input Language detected</label>
+                                                <app-dropdown [ngClass]="{'hb-disabled': true}" style="height:100px;cursor: pointer;" [dropdownData]="ilanguageList" [inputLabelId]="'HBtopic'"
+                                                  [value]="detectedlang" [isShowChooseOption]="false">
+                                                </app-dropdown>
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="hb-form-label">Choose Language to translate</label>
+                                                <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="olanguageList" [inputLabelId]="'HBtopic'"
+                                                  [value]="" [isShowChooseOption]="false"
+                                                  (selectedValueChange)="selectionChanged($event,'lang')">
+                                                </app-dropdown>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <textarea class="mt-2 form-control" rows="5"  
+                                                placeholder="Actual text"  [(ngModel)]="actualtext" ></textarea>
+                                            </div>
+                                            <div class="col-6"> 
+                                                <textarea class="mt-2 form-control" rows="5"  
+                                                placeholder="Translated text" [(ngModel)]="translatedtext"></textarea>                                                
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="mt-3 hb-button-group">
+                                        <button type="button" mat-button class="hb-primary-btn-type-1"
+                                            (click)="downloadtranslated()" 
+                                            [disabled]="translatedtext==''">
+                                            Download
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab id="HBDocumentsDocInboxTab">
+                    <ng-template mat-tab-label>
+                        <img src="assets/images/icons/Folder_Group.svg" alt="Documents Icon"
+                            id="HBDocumentsDocInboxTabImage" class="mr-2 hb-icon" />
+                        <span id="HBDocumentsDocInboxTabHeader">Record your speech as Note</span>
+                    </ng-template>
+                    <div class="hb-tab-content" style="background-color:aqua">
+                        <div class="row justify-content-between align-items-center mb-4">
+                            <div class="hb-button-group">
+                                <button type="button"  (click)="startVoiceRecognition()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                                     id="HBDocumentsReadyToReviewTabReviewsBtn">
+                                    Start Recording
+                                </button>
+                                <button type="button" (click)="closeVoiceRecognition()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                                 id="HBDocumentsReadyToReviewTabReviewsBtn">
+                                     Stop 
+                                </button>
+                            </div>                            
+                        </div>
+                        <div class="row" *ngIf="showText===true" >
+                            <div class="col-8">
+                                  <div class="hb-doc-inbox-list-container">
+                                    <div class="row align-items-center p-3 hb-doc-inbox-list">
+                                        <div class="col-12 p-0 row align-items-center hb-doc-list">
+                                            <p *ngIf="isListenting===true">
+                                                <img src="assets/images/recording.gif" width="100px" height="50px;" class="mr-2 hb-icon" />
+                                            </p>
+                                            <p style="font-weight: bold;" *ngIf="voiceText">
+                                                <span>{{voiceText}}</span>
+                                            </p>
+                          </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2" *ngIf="isListenting===false">
+                        <img src="assets/images/icons/save-active.png" (click)="createFileFromVoice()" width="100px" height="50px;" class="mr-2 hb-icon" />
+                      
+                    </div>
+                </div>                          
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </section>
+</div>
+
+
+
+<ng-template #uploadtemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create File</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input class="mt-2 form-control" rows="5" placeholder="File Name"
+        id="AddDocComment" maxlength="200" [(ngModel)]="fileName"/>
+     <input class="mt-2 form-control" type="file" (change)="fileChange($event)" name="inputfile" id="inputfile"> 
+    </div>
+    <div class="modal-footer">
+        <a type="button" style="background-color: purple;color: white;"  mat-button class="hb-primary-btn-type-1"
+        (click)="saveFile()">
+        Save
+    </a>
+    </div>
+  </ng-template>
+  <ng-template #createtemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create File</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input class="mt-2 form-control" rows="5" placeholder="File Name"
+        id="AddDocComment" maxlength="200" [(ngModel)]="fileName"/>
+       
+        <textarea class="mt-2 form-control" rows="5" placeholder="Add Text here."
+         id="AddDocComment" maxlength="200" [(ngModel)]="file"></textarea>
+    <span class="hb-info-text">Maximum length of Comment cannot exceed 200 characters.</span>
+    <br>
+</div>
+    <div class="modal-footer">
+        <a type="button" style="background-color: purple;color: white;"  mat-button class="hb-primary-btn-type-1"
+        (click)="createFile()">
+        Save
+    </a>
+    </div>
+  </ng-template> 

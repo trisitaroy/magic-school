@@ -1,0 +1,82 @@
+<ng-template #createDiscussionFormTemplate >
+  <form id="MSCreateDiscussionForm"  [formGroup]="discussionForm" class="hb-create-contact-form" >
+    <div class="col-12 p-0" >
+      <div class="hb-conatct-type-details">
+        <div class="row">
+          <div class="col-12 p-0 form-group"> 
+            <label class="hb-form-label">Choose Subject</label>
+            <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="topicList" [inputLabelId]="'HBtopic'"
+              [value]="topicList[0].value" [isShowChooseOption]="false"
+              (selectedValueChange)="selectionChanged($event,'topic')">
+            </app-dropdown>
+          </div>
+        </div>
+        <div class="hb-create-service-provider">
+          <div class="row" *ngIf="userInfo.role!=='teacher'">
+            <div class="col-12 col-md-6 p-0 pr-md-3 form-group">
+              <div class="row">
+                <div class="col-6 p-0">
+                  <app-toggle-switch [toggleChecked]="toggleChecked" (toggleValueChange)="toggleValueChange($event)">
+                  </app-toggle-switch>
+                  <span class="ml-2 mb-2">Notify Teacher</span>
+                </div>
+                <span *ngIf="chooseTeacher && teacherList.length==0">No teacher available for this subject</span>
+                <div class="col-6 p-0" *ngIf="chooseTeacher && teacherList.length>0">
+                  <label class="hb-form-label">Choose Teacher of {{topic}}</label>
+                  <app-dropdown style="height:100px;cursor: pointer;" [dropdownData]="teacherList" [inputLabelId]="'HBtopic'"
+                    [value]="teacherList[0].value" [isShowChooseOption]="false"
+                    (selectedValueChange)="selectionChanged($event,'teacher')">
+                  </app-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-12 p-0 pr-md-3 form-group">
+              <label class="hb-form-label hb-required">Question</label>
+              <textarea id="Question" class="form-control" id="Question" formControlName="question"
+              [value]="discussionForm.get('question').value" ></textarea>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<div class="hb-create-contact-container"  *ngIf="topicList.length>0">
+  <div class="col-12 p-0  hb-create-layout-container" id="MSCreateDiscussion">
+    <header class="col-12 row align-items-center hb-create-layout-heading-container">
+      <h3 class="hb-page-heading m-0" id="MSCreateDiscussionHeading">
+        New Discussion
+      </h3>
+      <button mat-button class="hb-close ml-auto" id="MSCreateDiscussionModalCloseBtn" (click)="navigateToContact()">
+        Close
+        <img src="assets/images/icons/close.png" alt="Close Icon" id="MSCreateDiscussionModalCloseIcon"
+          class="ml-2 hb-icon" />
+      </button>
+    </header>
+    <div class="col-12 p-0 hb-create-layout-body-container" id="MSCreateDiscussionBody">
+      <div class="row align-items-center hb-page-body hb-fixed-width-container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-12 offset-lg-0 hb-fixed-width">
+          <section class="hb-section py-4">
+            <ng-container *ngTemplateOutlet="createDiscussionFormTemplate">
+            </ng-container>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer class="hb-create-layout-footer-container">
+      <div class="hb-button-group" >
+        <button type="button" id="HBContactsCancelBtn" mat-button class="hb-secondary-btn"
+          (click)="navigateToContact()">
+          Cancel
+        </button>
+        <button type="button" id="HBContactsSaveBtn" mat-button class="hb-primary-btn-type-1"
+          (click)="saveChanges($event)" [disabled]="discussionForm.invalid">
+          Save
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
