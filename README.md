@@ -9,12 +9,10 @@ It is the year 2020 and students are experiencing a new way of life when it come
 * [Watson Text to speech](https://cloud.ibm.com/catalog/services/text-to-speech) : You can generate human-like audio from written text. 
 * [Watson Language Translator](https://cloud.ibm.com/catalog/services/language-translator) : The service allows users to translate text from one language to another.
 * [Watson Assistant Education-AI-ChatBot](https://cloud.ibm.com/catalog/services/watson-assistant) : The service defines a dialog that a student and a course provider might experience as a student searches for learning content.Students can input grade-level and academic topics question, and the chatbot responds with course recommendations and learning content links. 
+* [Ibm Cloud foundry](https://cloud.ibm.com/cloudfoundry/overview) : Create and deploy apps on IBM Cloud's multi-tenant Cloud Foundry enviroment available in 5 IBM Cloud Regions. 
+* [IBM Cloud continous delivery of toolchain](https://cloud.ibm.com/services/continuous-delivery/crn%3Av1%3Abluemix%3Apublic%3Acontinuous-delivery%3Aeu-gb%3Aa%2Fd54a7808f74547e498188a99a26fac7a%3A2380b01a-970d-4e37-be8c-c76c034a61ad%3A%3A?paneId=manage) : This automate builds, unit tests, deployments, and more. Edit and push code using Git Repos and Issue Tracking and the rich web based IDE. Create toolchains to enable tool integrations that support your development, deployment, and operation tasks.
 
-
-###### Before Running this Project
-
-###### Download code and install dependency
-
+## Before Running this Project Download code and install dependency
 ## Steps
 
 Follow these steps to setup and run this code pattern. The steps are described in detail below.

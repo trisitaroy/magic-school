@@ -1,0 +1,25 @@
+Short:
+
+It is the year 2020 and students are experiencing a new way of life when it comes to getting an education. Students are realizing
+they need to adopt a proactive and self-service mindset in to fulfill their academic needs.This is a minor implementation of
+an online educational environment and useful tools using Ibm cloud service that helps students and teachers to find and access learning content 
+supports this new self-service model.
+
+Long:
+
+In lieu of present Covid stricken world we are moving from a class base learning to remote structure where a certain language barrier 
+In this scenario my application will bridge the gap In Discussion section of my application, 
+anyone who might be participating in a discussion shall be able to translate the content to a language of their choice. 
+And also a student have an option to notify which ever teachers they want for a particular subject
+Studies find that active listening to a teacher will help you better remember what you hear and see. But without physical class room how
+In file section a Teacher can leave notes for students which can later be converted into audio format and heard by students or 
+they can download the note to a language of their choice. Also Teachers can record speech and upload as a note.
+Attendance tracking – how to track and check attendance of a student?
+Idle time tracking feature essentially logs a person out of their profile if they stay idle more than 10 minutes. 
+In full profile section total time and idle time is logged for everyone.
+How a teacher can evaluate a student without pen-paper exam??
+Students can request a teacher to upload a new quiz. When students are able to evaluate themselves by taking a quiz.
+When a teacher is Offline? Who will provide learning content?
+The chat bot  that can communicate with students on all subjects of elementary, high school levels. 
+User searches for learning courses by giving input grade-level and academic topics question, 
+and the chatbot responds with course recommendations and learning content.
