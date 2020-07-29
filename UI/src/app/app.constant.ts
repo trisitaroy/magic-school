@@ -34,6 +34,6 @@ export const APP_CONST = {
     error: 'Error',
     info: 'Info'
   },
-    API_URL:  'https://magicschool.eu-gb.cf.appdomain.cloud/api'//'http://localhost:3030/api'
-   ,WATSON_URL : 'https://magic-school-watson.eu-gb.mybluemix.net/api'//'http://localhost:3000/api
+    API_URL:  'http://localhost:3030/api',
+    WATSON_URL : 'http://localhost:3000/api'
 };
