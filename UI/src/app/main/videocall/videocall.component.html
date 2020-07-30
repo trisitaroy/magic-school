@@ -1,0 +1,62 @@
+<ng-template #covidTemplate >
+  <div class="content" role="main">    
+    <div class="inbox_msg"> 
+      <div class="mesgs">  
+        <div class="call"  *ngIf="!isJoined">
+          No one joined the call
+        </div>      
+        <div id="agora_local">
+        </div>
+        <div class="row" >
+          <div class="col-12 col-sm-6 col-lg-3 remote-containers">
+            <div class="remote_calls" *ngFor="let remote of remoteCalls;" [id]="remote">
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between align-items-center mb-4">
+          <div class="hb-button-group">
+              <button type="button"  (click)="startCall()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                   id="HBDocumentsReadyToReviewTabReviewsBtn">
+                   Join Call
+              </button>
+          </div>                            
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="mb-4 ms-discussion-body"  id="MSDiscussionListView">
+  <div class="row align-items-center ms-discussion-list"  >
+      <div class="weekContainers">
+        <div class="newmsg">           
+           <div class="row" >               
+              <div class="col-6">
+                 <div  class="hb-button-group"  *ngIf="!isJoined">
+                    <button style="height: 200px;" type="button"  (click)="startCall()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                         id="HBDocumentsReadyToReviewTabReviewsBtn">
+                         Join Class
+                    </button>               
+                </div>             
+              </div>
+              <div class="col-6">
+                <div  class="hb-button-group"  *ngIf="isJoined">
+                  <button type="button"   (click)="leave()" mat-button class="hb-primary-btn-type-1 hb-review-btn"
+                       id="HBDocumentsReadyToReviewTabReviewsBtn">
+                       Leave Class
+                  </button>               
+              </div>   
+              </div>
+           </div>                          
+       </div>  
+        <div id="agora_local">
+        </div>
+          <div class="remote-containers">            
+          <div class="row" >
+            <div class="col-12 col-sm-6 col-lg-3 remote_calls" *ngFor="let remote of remoteCalls;" [id]="remote">
+            </div>
+          </div>
+          </div>
+       </div>    
+  </div>              
+</div>

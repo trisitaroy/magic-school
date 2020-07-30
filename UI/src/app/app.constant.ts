@@ -15,7 +15,8 @@ export const APP_CONST = {
         result:'result',
         question:'question',
         inbox:"inbox",
-        noty :"noty"
+        noty :"noty",
+        videocall :"videocall"
     },
     pageTitle: {
         login: 'Login',
@@ -34,6 +35,6 @@ export const APP_CONST = {
     error: 'Error',
     info: 'Info'
   },
-    API_URL:  'http://localhost:3030/api',
-    WATSON_URL : 'http://localhost:3000/api'
+    API_URL:  'http://localhost:3030/api'//'https://magicschool.eu-gb.cf.appdomain.cloud/api'//'http://localhost:3030/api'
+   ,WATSON_URL : 'http://localhost:3000/api'//'https://magic-school-watson.eu-gb.mybluemix.net/api'//'http://localhost:3000/api
 };

@@ -9,4 +9,5 @@ export * from './create-quiz'
 export * from './topics';
 export * from './question';
 export * from './result'
-export * from './inbox'
+export * from './inbox';
+export * from './videocall'

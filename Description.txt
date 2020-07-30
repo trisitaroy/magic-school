@@ -6,7 +6,9 @@ an online educational environment and useful tools using Ibm cloud service that 
 supports this new self-service model.
 
 Long:
-
+When Can We Go to School? Nearly 300 Million Children Are Missing Class all over the world.My solution can help students 
+and teachers around the world quickly shift to remote Group Chat Video Calling Where a teacher can schedule a live seassion 
+and up to 17 students can join the live class.
 In lieu of present Covid stricken world we are moving from a class base learning to remote structure where a certain language barrier 
 In this scenario my application will bridge the gap In Discussion section of my application, 
 anyone who might be participating in a discussion shall be able to translate the content to a language of their choice. 

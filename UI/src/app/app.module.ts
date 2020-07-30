@@ -21,9 +21,14 @@ import { ResultComponent } from './main';
 import {SchoolBotComponent} from '../app/main/schoolbot'
 import {CreateQuizComponent} from '../app/main/create-quiz'
 import{InboxComponent} from '../app/main/inbox';
+import{VideocallComponent} from '../app/main/videocall'
 
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
+import { AngularAgoraRtcModule, AgoraConfig } from 'angular-agora-rtc'; // Add
+const agoraConfig: AgoraConfig = {
+  AppID: '153a665e15d749459127ceb6b5d6f56f',
+};
 
 @NgModule({
   declarations: [
@@ -35,9 +40,11 @@ import { from } from 'rxjs';
     QuestionComponent,
     ResultComponent,
     SchoolBotComponent,
-    InboxComponent    
+    InboxComponent ,
+    VideocallComponent   
   ],
-  imports: [
+  imports: [ 
+    AngularAgoraRtcModule.forRoot(agoraConfig), // Add
     NgIdleKeepaliveModule.forRoot(),
     MomentModule,
     BrowserModule,

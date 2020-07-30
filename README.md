@@ -6,6 +6,7 @@ It is the year 2020 and students are experiencing a new way of life when it come
 ## Featured technologies
 * [Angular](https://angular.io/guide/setup-local) :Front-end web app framework allowing application UI to be dynamic
 * [Express Js/Loopback framework](https://loopback.io/doc/en/lb3/Installation.html): Highly-extensible, open-source Node. js framework that enables you to Create dynamic end-to-end  REST APIs with little coding. 
+* [Agora RTC](https://docs.agora.io/en/Video/product_video?platform=All%20Platforms):The Agora Web SDK library uses APIs in the web browser to establish connections and control the communication and live broadcast services.
 * [Watson Text to speech](https://cloud.ibm.com/catalog/services/text-to-speech) : You can generate human-like audio from written text. 
 * [Watson Language Translator](https://cloud.ibm.com/catalog/services/language-translator) : The service allows users to translate text from one language to another.
 * [Watson Assistant Education-AI-ChatBot](https://cloud.ibm.com/catalog/services/watson-assistant) : The service defines a dialog that a student and a course provider might experience as a student searches for learning content.Students can input grade-level and academic topics question, and the chatbot responds with course recommendations and learning content links. 
@@ -58,6 +59,14 @@ In this section people can gather to have discussions about a specific topic.A p
 <br>
 <p align="center">
   <img src="GIF/discussion.gif">
+</p>
+<br>
+
+## Video Class    
+My solution can help students and teachers around the world quickly shift to remote Group Chat Video Calling Where a teacher can schedule a live seassion and up to 17 students can join the live class.
+<br>
+<p align="center">
+  <img src="GIF/videocall.gif">
 </p>
 <br>
 

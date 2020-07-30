@@ -11,6 +11,7 @@ import {AuthGuard} from '../app/guard/auth.guard'
 import { SchoolBotComponent } from './main/schoolbot';
 import { CreateQuizComponent } from './main';
 import { InboxComponent } from './main/inbox';
+import {VideocallComponent} from './main/videocall'
 export const HBRoutes: Routes = [
   {
     path: '',
@@ -92,6 +93,13 @@ export const HBRoutes: Routes = [
     {
       path: APP_CONST.routes.schoolbot,
       component: SchoolBotComponent,
+      data: {
+        isShowHeaderFooter: false
+      }     
+    },
+    {
+      path: APP_CONST.routes.videocall,
+      component: VideocallComponent,
       data: {
         isShowHeaderFooter: false
       }     

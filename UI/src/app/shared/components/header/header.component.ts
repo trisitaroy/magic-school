@@ -92,6 +92,9 @@ export class HeaderComponent implements OnInit, OnChanges {
       case 'inbox':
         this.router.navigate([this.routes.inbox]);
         break;
+        case 'videocall':
+          this.router.navigate([this.routes.videocall]);
+          break;
       case 'login':
         this.router.navigate([this.routes.login]);
         break;
